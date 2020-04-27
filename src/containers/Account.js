@@ -1,6 +1,5 @@
 import React from 'react';
 import AllPlaylist from '../components/AllPlayList';
-import AddVideoToPlaylistForm from "../components/AddVideoToPlaylistForm";
 
 const Account = (props) => {
 
@@ -8,7 +7,6 @@ const Account = (props) => {
             <div>
                 <div className="col-2"></div>
                 <AllPlaylist className="col-10"/>
-                <AddVideoToPlaylistForm />
             </div>
     )
 }
