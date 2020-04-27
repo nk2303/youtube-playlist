@@ -1,28 +1,31 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import { searchYoutube } from "../actions/youtubeSearch";
+import { mapSearchDispatchToProps } from "../store";
+import Video from './Video';
 
-const youtubeEmbedLink = "https://www.youtube.com/embed/"
-const VideoList = (props) => {
+
+// const youtubeEmbedLink = "https://www.youtube.com/embed/"
+const VideoList = ({searchYoutube, videos}) => {
     useEffect(() => {
-        props.searchYoutube('final fantasy');
-    }, []);
+        searchYoutube('cute pets');
+    }, [searchYoutube]);
 
     return (
         <div>
-            {props.videos.map(video => <iframe key={video.id.videoId} src={youtubeEmbedLink + video.id.videoId} />)}
+            {videos.map(video => <Video
+                key={video.id.videoId}
+                videoInfo={video}
+                /> )}
         </div>
+
     )
 }
 
-export default connect(
-    (store) => {
-        return {
-            videos: store.videos
-        }
-    }, (dispatch) => {
-        return {
-            searchYoutube: () => searchYoutube().then(dispatch)
-        }
+const mapStateToProps = store => {
+    return {
+        videos: store.videos,
     }
-)(VideoList);
+};
+
+export default connect(mapStateToProps, mapSearchDispatchToProps)(VideoList);
+
