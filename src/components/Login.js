@@ -1,64 +1,63 @@
-import React from "react";
+import React, { useState } from "react";
+import { connect } from 'react-redux';
+import { login } from "../actions/userAction";
 
-const Login = () => {
+export const Login = ({ loginError, signin }) => {
+
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+
+    const handleUsernameChange = e => {
+      setUsername(e.target.value);
+    }
+    
+    const handlePasswordChange = e => {
+      setPassword(e.target.value);
+    }
+
+    const handleSubmit = e => {
+      e.preventDefault();
+      e.stopPropagation();
+      signin(username, password);
+    }
 
     return (
-        <form>
+        <form onSubmit={handleSubmit}>
             <fieldset>
                 <legend className="text-center">Have an account?</legend>
                 <div className="form-group row"></div>
                 
                 <div className="form-group">
-                    <input type="text" className="form-control radius-5px" id="exampleInputEmail1" placeholder="Username ..."></input>
+                    <input
+                      type="text"
+                      className={`form-control radius-5px${loginError ? ' is-invalid' : ''}`}
+                      id="exampleInputEmail1"
+                      placeholder="Username ..."
+                      onChange={handleUsernameChange}
+                      value={username}
+                    ></input>
                 </div>
                 
                 <div className="form-group">
-                    <input type="password" className="form-control radius-5px" id="exampleInputPassword1" placeholder="Password ..."></input>
+                    <input
+                      type="password" 
+                      className={`form-control radius-5px${loginError ? ' is-invalid' : ''}`}
+                      id="exampleInputPassword1" 
+                      placeholder="Password ..."
+                      onChange={handlePasswordChange}
+                      value={password}
+                    ></input>
+                    {loginError
+                      ? <div className="invalid-feedback">Sorry, that username and password doesn't match?</div>
+                      : null}
                 </div>
-                
                 <button type="submit" className="btn btn-primary radius-5px btn-block">Log in</button>
             </fieldset>
         </form>
     )
 }
 
-export default Login;
-
-
-
-{/* <Container>
-          <Form.Label>Have an account?</Form.Label>
-          <br />
-          <br />
-          <Form noValidate validated={this.state.validated} onSubmit={this.handleSubmit}>
-            <Form.Group>
-              <Form.Control
-                required
-                type="text"
-                label="username"
-                placeholder="Username"
-                onChange={event => this.handleUsernameChange(event)}
-                value={this.state.username}
-              />
-              <Form.Control.Feedback type="invalid">
-                You must enter a username.
-            </Form.Control.Feedback>
-            </Form.Group>
-            <Form.Group>
-              <Form.Control
-                required
-                type="password"
-                placeholder="Password"
-                onChange={event => this.handlePasswordChange(event)}
-                value={this.state.password}
-              />
-              <Form.Control.Feedback type="invalid">
-                Enter your password.
-            </Form.Control.Feedback>
-              {this.state.error ? <Form.Text> {this.state.error} </Form.Text> : null}
-            </Form.Group>
-            <Button variant="secondary" type="submit" block>
-              Log in
-          </Button>
-          </Form>
-        </Container> */}
+export default connect(
+  store => ({loginError: store.userContext.error}),
+  dispatch => ({signin: (username, password) => login(username, password).then(dispatch)})
+)(Login);

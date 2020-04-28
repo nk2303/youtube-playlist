@@ -2,7 +2,7 @@ import React from 'react';
 import Signup from '../components/Signup';
 import Login from '../components/Login';
 
-const Account = (props) => {
+const LoginPage = (props) => {
 
     return (
         <div>
@@ -29,5 +29,5 @@ const Account = (props) => {
     )
 }
 
-export default Account
+export default LoginPage
 

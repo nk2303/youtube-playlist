@@ -1,15 +1,16 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
-import { mapSearchDispatchToProps } from "../store";
+import { logout } from '../actions/userAction';
+import { searchYoutube } from "../actions/youtubeSearch";
 import { Link } from 'react-router-dom';
 
-const NavBar = (props) => {
+const NavBar = ({ user, searchYoutube, signout }) => {
     const [searchKeyword, setSearchKeywork] = useState('');
 
 
     const handleSearch = (e) => {
         e.preventDefault();
-        props.searchYoutube(searchKeyword);
+        searchYoutube(searchKeyword);
     }
 
     const handleChange = (e) => {
@@ -43,8 +44,19 @@ const NavBar = (props) => {
                     <button onClick={handleSearch} className="radius-5px btn btn-secondary my-2 my-sm-0 " type="button">Search</button>
                 </form>
             </div>
+            { user ? <button onClick={signout}>Sign out</button> : null }
         </nav>
     )
 }
 
-export default connect(null, mapSearchDispatchToProps)(NavBar)
+export default connect(
+    store => ({user: store.userContext.user}),
+    (dispatch) => {
+        return {
+            searchYoutube: (keyword) => {
+                searchYoutube(keyword).then(dispatch);
+            },
+            signout: () => dispatch(logout())
+        };
+    }
+)(NavBar)

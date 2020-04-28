@@ -1,10 +1,9 @@
 import React from "react";
 import { connect } from "react-redux";
-// import { openModal } from "../actions/modalActions";
 import { Link } from 'react-router-dom';
 
 const youtubeEmbedLink = "https://www.youtube.com/embed/"
-const Video = ({ videoInfo, openModal }) => {
+const Video = ({ videoInfo }) => {
 
     return (
         <div className="card text-white bg-secondary mb-3 radius-5px">
@@ -53,4 +52,4 @@ const Video = ({ videoInfo, openModal }) => {
 }
 
 // export default connect(null, dispatch => ({openModal: videoInfo => dispatch(openModal(videoInfo))}))(Video);
-export default connect(null, dispatch => (console.log("idk")))(Video);
+export default Video;
