@@ -33,6 +33,9 @@ const NavBar = ({ user, searchYoutube, signout }) => {
                     <li className="nav-item">
                         <Link to='/about' className="nav-link" >About<span className="sr-only">(current)</span></Link>
                     </li>
+                    <li>
+                    { user ? <button className="radius-5px btn btn-danger" onClick={signout}>Sign out</button> : null }
+                    </li>
                 </ul>
                 <form className="form-inline my-2 my-lg-0" onSubmit={handleSearch}>
                     <input
@@ -41,10 +44,9 @@ const NavBar = ({ user, searchYoutube, signout }) => {
                         placeholder="Search" 
                         onChange={(e) => handleChange(e)} value={searchKeyword}
                     />
-                    <button onClick={handleSearch} className="radius-5px btn btn-secondary my-2 my-sm-0 " type="button">Search</button>
+                    <button onClick={handleSearch} className="radius-5px btn btn-secondary my-2 my-sm-0" type="button">Search</button>
                 </form>
             </div>
-            { user ? <button onClick={signout}>Sign out</button> : null }
         </nav>
     )
 }
