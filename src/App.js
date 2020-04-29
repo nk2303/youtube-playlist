@@ -12,8 +12,6 @@ import About from './containers/About';
 import VideoShow from './containers/VideoShow';
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 
-
-
 const App = ({ user }) => {
   return (
       <Router>
@@ -37,4 +35,5 @@ const App = ({ user }) => {
   );
 }
 
-export default connect(store => ({user: store.userContext.user}))(App);
+
+export default connect( store => ({user: store.userContext.user}))(App);

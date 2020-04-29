@@ -1,13 +1,18 @@
 import React from 'react';
+import CreatePlaylist from './CreatePlaylist';
 
 
 const AccountNav = (props) => {
 
     return (
-        <div class="list-group">
-            <a href="#" class="list-group-item list-group-item-action">Your Playlists</a>
-            <a href="#" class="list-group-item list-group-item-action">Your Followed Playlists</a> 
-        </div>
+        <div>
+            <div className="list-group">
+                <a href="#" className="list-group-item list-group-item-action">Your Playlists</a>
+                <a href="#" className="list-group-item list-group-item-action">Your Followed Playlists</a> 
+            </div>
+            <br/>
+            <CreatePlaylist />
+        </div>      
     )
 }
 

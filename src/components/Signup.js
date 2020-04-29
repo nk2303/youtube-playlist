@@ -1,129 +1,102 @@
-import React from "react";
+import React, { useState } from "react";
+import { signup } from "../actions/userAction";
+import { connect } from 'react-redux';
 
-const Signup = () => {
+const Signup = ({ signupError, signup }) => {
+
+    const [email, setEmail] = useState('');
+    const [fullName, setFullname] = useState('');
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
+
+    const handleUsernameChange = e => {setUsername(e.target.value)}
+    const handleFullNameChange = e => {setFullname(e.target.value)}
+    const handleEmailChange = e => {setEmail(e.target.value)}
+    const handlePasswordChange = e => {setPassword(e.target.value)}
+    const handleConfirmPasswordChange = e => {setConfirmPassword(e.target.value)}
+
+    const handleSubmit = e => {
+        e.preventDefault();
+        e.stopPropagation();
+        signup(email, username, fullName, password);
+    }
 
     return (
-        <form>
+        <form onSubmit={handleSubmit}>
             <fieldset>
                 <legend className="text-center">Don't have an account?</legend>
                 <div className="form-group row"></div>
 
                 <div className="form-group">
-                    <input type="text" className="form-control radius-5px" id="exampleInputEmail1" placeholder="Username ..."></input>
+                    <input
+                        type="text"
+                        className="form-control radius-5px"
+                        id="username1"
+                        placeholder="Username ..."
+                        onChange={handleUsernameChange}
+                        value={username}
+                        ></input>
                 </div>
                 
                 <div className="form-group">
-                    <input type="text" className="form-control radius-5px" id="exampleInputEmail1" placeholder="Full name ..."></input>
+                    <input 
+                        type="text"
+                        className="form-control radius-5px"
+                        id="fullName"
+                        placeholder="Full name ..."
+                        onChange={handleFullNameChange}
+                        value={fullName}
+                        ></input>
                 </div>
 
                 <div className="form-group">
-                    <input type="email" className="form-control radius-5px" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email address ..."></input>
+                    <input 
+                        type="email" 
+                        className="form-control radius-5px" 
+                        id="InputEmail1" 
+                        aria-describedby="emailHelp" 
+                        placeholder="Email address ..."
+                        onChange={handleEmailChange}
+                        value={email}
+                        ></input>
                 </div>
 
                 <div className="form-group">
-                    <input type="password" className="form-control radius-5px" id="exampleInputPassword1" placeholder="Password ..."></input>
+                    <input 
+                        type="password" 
+                        className="form-control radius-5px" 
+                        id="InputPassword1" 
+                        placeholder="Password ..."
+                        onChange={handlePasswordChange}
+                        value={password}
+                        ></input>
                 </div>
 
                 <div className="form-group">
-                    <input type="password" className="form-control radius-5px" id="exampleInputPassword1" placeholder="Confirm password ..."></input>
+                    <input 
+                        type="password" 
+                        className="form-control radius-5px" 
+                        id="confirmPassword" 
+                        placeholder="Confirm password ..."
+                        onChange={handleConfirmPasswordChange}
+                        value={confirmPassword}
+                        ></input>
                 </div>
                 
-                <button type="submit" className="btn btn-primary radius-5px btn-block">Sign Up</button>
+                <button 
+                    type="submit" className="btn btn-primary radius-5px btn-block">Sign Up</button>
             </fieldset>
         </form>
     )
 }
 
-export default Signup;
+const mapDispatchToProps = (dispatch) => {
+    return {
+      signup: (email, username, fullName, password) => signup(email, username, fullName, password).then(dispatch)
+    }
+  }
 
-// <Container>
-//           <Form.Label>Don't have an account?</Form.Label>
-//           <br />
-//           <br />
-//           <Form noValidate validated={this.state.validated} onSubmit={this.handleSubmit}>
-//             <Form.Group >
-//               <Form.Control
-//                 required
-//                 type="text"
-//                 name="username"
-//                 placeholder="Username"
-//                 onChange={event => this.handleChange(event)}
-//                 value={this.state.fields.username}
-//               />
-//               <Form.Control.Feedback type="invalid">
-//                 You must enter a username.
-//             </Form.Control.Feedback>
-//             </Form.Group>
-//             <Form.Group>
-//               <Form.Control
-//                 required
-//                 type="text"
-//                 name="first_name"
-//                 placeholder="First name"
-//                 onChange={event => this.handleChange(event)}
-//                 value={this.state.fields.first_name}
-//               />
-//               <Form.Control.Feedback type="invalid">
-//                 You must enter a first name.
-//             </Form.Control.Feedback>
-//             </Form.Group>
-//             <Form.Group>
-//               <Form.Control
-//                 required
-//                 type="text"
-//                 name="last_name"
-//                 placeholder="Last name"
-//                 onChange={event => this.handleChange(event)}
-//                 value={this.state.fields.last_name}
-//               />
-//             </Form.Group>
-//             <Form.Control.Feedback type="invalid">
-//               You must enter a last name.
-//             </Form.Control.Feedback>
-//             <Form.Group>
-//               <Form.Control
-//                 required
-//                 type="text"
-//                 name="email"
-//                 placeholder="Enter email"
-//                 onChange={event => this.handleChange(event)}
-//                 value={this.state.fields.email}
-//               />
-//               <Form.Control.Feedback type="invalid">
-//                 You must enter an email.
-//             </Form.Control.Feedback>
-//             </Form.Group>
-//             <Form.Group>
-//               <Form.Control
-//                 required
-//                 type="password"
-//                 name="password"
-//                 placeholder="Password"
-//                 onChange={event => this.handleChange(event)}
-//                 value={this.state.fields.password}
-//               />
-//               <Form.Control.Feedback type="invalid">
-//                 You must enter a password.
-//             </Form.Control.Feedback>
-//             </Form.Group>
-//             <Form.Group>
-//               <Form.Control
-//                 required
-//                 type="password"
-//                 name="password_confirmation"
-//                 placeholder="Confirm password"
-//                 onChange={event => this.handleChange(event)}
-//                 value={this.state.fields.password_confirmation}
-//               />
-//               <Form.Control.Feedback type="invalid">
-//                 You must confirm your password.
-//             </Form.Control.Feedback>
-//             {this.state.error ? <Form.Text> {this.state.error} </Form.Text> : null}
-//             </Form.Group>
-//             <Form.Group>
-//               <Button variant="secondary" type="submit" block>
-//                 Create account
-//               </Button>
-//             </Form.Group>
-//           </Form>
-//         </Container>
+export default connect(store => ({signupError: store.userContext.error}), mapDispatchToProps)(Signup);
+
+

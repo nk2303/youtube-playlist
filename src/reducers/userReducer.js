@@ -11,6 +11,10 @@ export const userReducer = (state = INITIAL_STATE, action) => {
             return { user: null, error: null };
         case "LOGIN_ERROR":
             return { user: null, error: action.error}
+        case "SIGNUP":
+            localStorage.setItem(USER_STORAGE_KEY, JSON.stringify(action.payload));
+            return { user: action.payload, error: null };
+        
         default:
             return state;
     };
