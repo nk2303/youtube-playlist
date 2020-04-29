@@ -7,6 +7,7 @@ export const playlistReducer = (state = PLAYLIST_INITIAL_STATE, action) => {
             return [...state, action.payload.playlist];
 
         case 'GET_MY_PLAYLISTS':
+            console.log(action.payload);
             return action.payload.map(item => item);
 
         default:

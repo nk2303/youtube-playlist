@@ -1,6 +1,8 @@
 const BACKEND_DOMAIN = process.env.REACT_APP_BACKEND_DOMAIN;
+const userContext = JSON.parse(localStorage.getItem('user'));
+let token = () => localStorage.getItem("token")
 
-export const createPlaylist = (playlistName, description, token) => {
+export const createPlaylist = (playlistName, description) => {
 
     const playlist = {
         playlist: {
@@ -13,7 +15,7 @@ export const createPlaylist = (playlistName, description, token) => {
         headers: {
             "Content-Type": "application/json",
             Accept: "application/json",
-            Authorization: token
+            Authorization: token()
         },
         body: JSON.stringify(playlist)
     }).then(res => res.json())
@@ -31,26 +33,28 @@ export const createPlaylist = (playlistName, description, token) => {
     });
 }
 
-export const getMyPlaylists = (token) => {
-
+export const getMyPlaylists = (dispatch) => {
+    //api services fil would have a global token so I just have refrence without passing it in
     return fetch(`${BACKEND_DOMAIN}/api/v1/playlists`, {
         method: "GET",
         headers: {
             "Content-Type": "application/json",
             Accept: "application/json",
-            Authorization: token
+            Authorization: token()
         },
     }).then(res => res.json())
     .then(res => {
-        if (res.error) {
+        if (res.message) {
             return {
                 type: "GET_MY_PLAYLISTS_ERROR",
-                error: res.error
+                error: res.message
             };
         }
-        return {
-            type: "GET_MY_PLAYLISTS",
-            payload: res
-        }
+        dispatch(
+            {
+                type: "GET_MY_PLAYLISTS",
+                payload: res
+            }
+        ) 
     });
 }

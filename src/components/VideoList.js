@@ -1,18 +1,14 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { mapSearchDispatchToProps } from "../store";
-import Video from './Video';
+import VideoInfo from './VideoInfo';
 
 
 // const youtubeEmbedLink = "https://www.youtube.com/embed/"
 const VideoList = ({searchYoutube, videos}) => {
-    useEffect(() => {
-        searchYoutube('cute pets');
-    }, [searchYoutube]);
-
     return (
         <div>
-            {videos.map(video => <Video
+            {videos.map(video => <VideoInfo
                 key={video.id.videoId}
                 videoInfo={video}
                 /> )}

@@ -1,16 +1,36 @@
-import React from 'react';
-import VideoList from './VideoList';
+import React, {useEffect} from 'react';
+import Video from './Video';
+import { connect } from 'react-redux';
+import {getMyPlaylists} from '../actions/playlistAction';
 
-const PlaylistCollection = (props) => {
 
+const PlaylistCollection = ({getPlaylists, myPlaylists}) => {
+
+    useEffect(() => {
+        getPlaylists()
+    }, [])
+    
+    
     return (
         <div className='row'>
-            <div className='col-3 white-translucent-02 margin-10px radius-5px'><h5 className='margin-10px'>Playlist name 1 </h5><br/><VideoList /></div>
-            <div className='col-3 white-translucent-02 margin-10px radius-5px'><h5 className='margin-10px'>Playlist name 2 </h5><br/><VideoList /></div>
-            <div className='col-3 white-translucent-02 margin-10px radius-5px'><h5 className='margin-10px'>Playlist name 3 </h5><br/><VideoList /></div>
+            { myPlaylists.map( playlist => 
+                <div className='col-3 white-translucent-02 margin-10px radius-5px'>
+                    <h5 className='margin-10px'> {playlist.playlist_name}</h5>
+                    <br/>
+                    
+                    {playlist.videos.map(video => <Video
+                    key={video.youtube_video_id}
+                    videoId={video.youtube_video_id}
+                /> )}
+            </div>) }
         </div>
     )
 }
 
-// export default PlaylistCollection 
-// export default connect(store => ({token: store.userContext.jwt}), mapDispatchToProps)(PlaylistCollection)
+const mapDispatchToProps = (dispatch) => {
+    return {
+        getPlaylists: () => getMyPlaylists(dispatch)
+    }
+}
+
+export default connect(store => ({myPlaylists: store.myPlaylists}), mapDispatchToProps)(PlaylistCollection)

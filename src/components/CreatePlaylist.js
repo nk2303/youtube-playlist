@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import {createPlaylist} from '../actions/playlistAction';
-import { userReducer } from '../reducers/userReducer';
+
 
 const CreatePlaylist = ({createPlaylist, token}) => {
 
@@ -69,10 +69,6 @@ const CreatePlaylist = ({createPlaylist, token}) => {
                         </fieldset>
                     </form>
                 </div>
-                <div className="modal-footer">
-                    <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-                    {/* <button type="submit" className="btn btn-primary">Save changes</button> */}
-                </div>
                 </div>
             </div>
             </div>
@@ -87,6 +83,7 @@ const mapDispatchToProps = (dispatch) => {
         }
     }
 }
+
 
 
 export default connect(store => ({token: store.userContext.jwt}), mapDispatchToProps)(CreatePlaylist)

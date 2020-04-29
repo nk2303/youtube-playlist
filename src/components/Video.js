@@ -1,13 +1,12 @@
 import React from "react";
 import { Link } from 'react-router-dom';
+import {getMyPlaylists} from '../actions/playlistAction';
+import { connect } from 'react-redux';
 
 const youtubeEmbedLink = "https://www.youtube.com/embed/"
-const Video = ({ videoInfo }) => {
-
+export const Video = (props) => {
     return (
         <div className="card text-white bg-secondary mb-3 radius-5px">
-            <h6>Date: {videoInfo.snippet.publishedAt.slice(5,7)}-{videoInfo.snippet.publishedAt.slice(0,4)}</h6>
-            <h6>Channel: {videoInfo.snippet.channelTitle}</h6>
             <div className="btn-group btn-block" role="group" aria-label="Basic example">
                 <button type="button" className="btn btn-secondary" onClick={console.log("like button clicked")}>Like</button>
                 <button type="button" className="btn btn-secondary" data-toggle="modal" data-target="#exampleModal">Add +</button>
@@ -16,7 +15,7 @@ const Video = ({ videoInfo }) => {
                 <div className="modal-dialog" role="document">
                     <div className="modal-content">
                     <div className="modal-header">
-                        <iframe title={videoInfo.id.videoId} src={youtubeEmbedLink + videoInfo.id.videoId} />
+                        <iframe {...props} title={props.videoId} src={youtubeEmbedLink + props.videoId} />
                         <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                         </button>
@@ -24,14 +23,11 @@ const Video = ({ videoInfo }) => {
                     <div className="modal-body">
                         <legend>Save to Playlist</legend>
                         <div className="form-group">
+                            {props.myPlaylists.map(playlist => 
                                 <div className="custom-control custom-checkbox">
-                                    <input type="checkbox" className="custom-control-input" id="customCheck1" checked=""></input>
-                                    <label className="custom-control-label" htmlFor="customCheck1">Playlist Name 1</label>
-                                </div>
-                                <div className="custom-control custom-checkbox">
-                                    <input type="checkbox" className="custom-control-input" id="customCheck2" checked=""></input>
-                                    <label className="custom-control-label" htmlFor="customCheck2">Playlist Name 2</label>
-                                </div>
+                                <input type="checkbox" className="custom-control-input" id="customCheck1" checked=""></input>
+                                <label className="custom-control-label" htmlFor="customCheck1">{playlist.playlist_name}</label>
+                            </div>)}
                         </div>
                     </div>
                     <div className="modal-footer">
@@ -40,15 +36,24 @@ const Video = ({ videoInfo }) => {
                     </div>
                     </div>
                 </div>
-                </div>
-                <Link to={`/videoshow/${videoInfo.id.videoId}`} className="btn btn-secondary" >Full Screen<span className="sr-only"></span></Link>
             </div>
-
-            <iframe className="radius-5px text-center" title={videoInfo.id.videoId} src={youtubeEmbedLink + videoInfo.id.videoId} />
-
+            <Link to={`/videoshow/${props.videoId}`} className="btn btn-secondary" >Full Screen<span className="sr-only"></span></Link>
+            </div>
+            <iframe {...props} title={props.videoId} src={youtubeEmbedLink + props.videoId} />
         </div>
     )
 }
 
+const mapDispatchToProps = (dispatch) => {
+    return {
+        getPlaylists: () => getMyPlaylists(dispatch)
+    }
+}
 
-export default Video;
+const mapStateToProps = (store) => {
+    return {
+        myPlaylists: store.myPlaylists,
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Video)

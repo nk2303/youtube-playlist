@@ -63,7 +63,7 @@ export const signup = (email, username, fullName, password) => {
             payload: res
         }
     }); 
-    // return loginSignup(`${BACKEND_DOMAIN}/api/v1/users`, email, username, fullName, password);
+
 }
 
 export const logout = () => {
