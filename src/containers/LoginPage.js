@@ -13,7 +13,7 @@ const LoginPage = (props) => {
                 <div className="col-3">
                     <Login />
                 </div>
-                <div className="col-2"></div>
+                <div className="col-2 text-center"><br/><br/><br/><br/><br/><br/><h4><br/>OR</h4></div>
                 <div className="col-3">
                     <Signup />
                 </div>

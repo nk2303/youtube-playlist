@@ -6,7 +6,11 @@ const Home = (props) => {
 
     return (
         <div>
-            <VideoList />
+            <div className="col-4"></div>
+            <div className="col-3">
+                <VideoList />
+            </div>
+            <div className="col-4"></div>
         </div>
     )
 }

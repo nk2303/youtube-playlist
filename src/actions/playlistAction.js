@@ -58,3 +58,62 @@ export const getMyPlaylists = (dispatch) => {
         ) 
     });
 }
+
+
+
+export const deletePlaylist = (playlist_id, dispatch) => {
+    fetch(`${BACKEND_DOMAIN}/api/v1/playlists/${playlist_id}`, {
+        method: "DELETE",
+        headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+            Authorization: token()
+        },
+    }).then(res => res.json())
+    .then(res => {
+        if (res.error) {
+            dispatch( {
+                type: "DELETE_PLAYLIST_ERROR",
+                error: res.error
+            });
+        }
+        else {
+            dispatch(
+                {
+                    type: "DELETE_PLAYLIST",
+                    playlist_id: playlist_id
+                }
+            );
+        }
+    }).catch(err => {
+        dispatch( {
+            type: "DELETE_PLAYLIST_ERROR",
+            error: err
+        })
+    });
+}
+
+// export const updateVideoPlaylists = (playlist_id) => {
+//     return fetch(`${BACKEND_DOMAIN}/api/v1/playlists/${playlist_id}`, {
+//         method: "P",
+//         headers: {
+//             "Content-Type": "application/json",
+//             Accept: "application/json",
+//             Authorization: token()
+//         },
+//     }).then(res => res.json())
+//     .then(res => {
+//         if (res.message) {
+//             return {
+//                 type: "DELETE_PLAYLIST_ERROR",
+//                 error: res.message
+//             };
+//         }
+//         return(
+//             {
+//                 type: "DELETE_PLAYLIST",
+//                 playlist_id: playlist_id
+//             }
+//         ) 
+//     });
+// }

@@ -31,9 +31,9 @@ const CreatePlaylist = ({createPlaylist, token}) => {
                 className="btn btn-primary radius-5px btn-block"
                 data-toggle="modal"
                 data-target="#createPlaylist" >Create new Playlist</button>
-            <div className="modal fade" id="createPlaylist" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div className="modal fade " id="createPlaylist" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div className="modal-dialog" role="document">
-                <div className="modal-content">
+                <div className="modal-content radius-5px">
                 <div className="modal-header">
                     <h5 className="modal-title" id="createPlaylist">Create new Playlist</h5>
                     <button type="button" className="close" data-dismiss="modal" aria-label="Close">
@@ -65,7 +65,7 @@ const CreatePlaylist = ({createPlaylist, token}) => {
                                     value={description}
                                     ></textarea>
                             </div>
-                            <button type="submit" className="btn btn-primary">Save changes</button>
+                            <button type="submit" className="btn btn-primary radius-5px">Create Playlist</button>
                         </fieldset>
                     </form>
                 </div>

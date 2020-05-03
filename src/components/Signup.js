@@ -85,7 +85,7 @@ const Signup = ({ signupError, signup }) => {
                 </div>
                 
                 <button 
-                    type="submit" className="btn btn-primary radius-5px btn-block">Sign Up</button>
+                    type="submit" className="btn btn-success radius-5px btn-block">Sign Up</button>
             </fieldset>
         </form>
     )

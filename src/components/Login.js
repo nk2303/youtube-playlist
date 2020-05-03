@@ -51,7 +51,7 @@ export const Login = ({ loginError, signin }) => {
                       ? <div className="invalid-feedback">Sorry, that username and password doesn't match?</div>
                       : null}
                 </div>
-                <button type="submit" className="btn btn-primary radius-5px btn-block">Log in</button>
+                <button type="submit" className="btn btn-info radius-5px btn-block">Log in</button>
             </fieldset>
         </form>
     )

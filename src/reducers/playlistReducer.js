@@ -10,6 +10,9 @@ export const playlistReducer = (state = PLAYLIST_INITIAL_STATE, action) => {
             console.log(action.payload);
             return action.payload.map(item => item);
 
+        case 'DELETE_PLAYLIST':
+            return state.filter((p) => p.id !== action.playlist_id)
+
         default:
             return state;
     }

@@ -3,8 +3,6 @@ import { connect } from "react-redux";
 import { mapSearchDispatchToProps } from "../store";
 import VideoInfo from './VideoInfo';
 
-
-// const youtubeEmbedLink = "https://www.youtube.com/embed/"
 const VideoList = ({searchYoutube, videos}) => {
     return (
         <div>
@@ -13,7 +11,6 @@ const VideoList = ({searchYoutube, videos}) => {
                 videoInfo={video}
                 /> )}
         </div>
-
     )
 }
 
