@@ -1,8 +1,7 @@
 import React, {useEffect} from 'react';
 import Video from './Video';
 import { connect } from 'react-redux';
-import {getMyPlaylists} from '../actions/playlistAction';
-import {deletePlaylist} from '../actions/playlistAction';
+import {getMyPlaylists, deletePlaylist} from '../actions/playlistAction';
 
 
 const PlaylistCollection = ({getPlaylists, myPlaylists, deletePlaylist}) => {
