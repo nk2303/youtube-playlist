@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import {createPlaylist} from '../actions/playlistAction';
 
 
-const CreatePlaylist = ({createPlaylist, token}) => {
+const CreatePlaylist = ({createPlaylist}) => {
 
 
     const [playlistName, setplaylistName] = useState('');
@@ -13,16 +13,15 @@ const CreatePlaylist = ({createPlaylist, token}) => {
         setplaylistName(e.target.value);
       }
       
-      const handleDescriptionChange = e => {
-        setDescription(e.target.value);
-      }
+    const handleDescriptionChange = e => {
+    setDescription(e.target.value);
+    }
   
-      const handleSubmit = e => {
-        console.log(playlistName, description, token)
-        e.preventDefault();
-        e.stopPropagation();
-        createPlaylist(playlistName, description, token);
-      }
+    const handleSubmit = e => {
+    e.preventDefault();
+    e.stopPropagation();
+    createPlaylist(playlistName, description);
+    }
 
     return (
         <div className='row'>
@@ -78,8 +77,8 @@ const CreatePlaylist = ({createPlaylist, token}) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        createPlaylist: (playlistName, description, token) => {
-            createPlaylist(playlistName, description, token).then(dispatch)
+        createPlaylist: (playlistName, description) => {
+            createPlaylist(playlistName, description).then(dispatch)
         }
     }
 }

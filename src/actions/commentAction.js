@@ -2,13 +2,12 @@ const BACKEND_DOMAIN = process.env.REACT_APP_BACKEND_DOMAIN;
 // const userContext = JSON.parse(localStorage.getItem('user'));
 let token = () => localStorage.getItem("token")
 
-export const createComment = (content, videoId, playlistId) => {
+export const createComment = (content, videoId) => {
 
     const comment = {
         comment: {
             content,
-            videoId,
-            playlistId
+            videoId
         }
     }
     return fetch(`${BACKEND_DOMAIN}/api/v1/comments`, {
@@ -45,7 +44,7 @@ export const getComments = (dispatch) => {
     }).then(res => res.json())
     
     .then(res => {
-        console.log(res);
+        console.log("ALL COMMENTS HERE",res);
         if (res.message) {
             dispatch( {
                 type: "GET_COMMENTS_ERROR",

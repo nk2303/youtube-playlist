@@ -4,7 +4,7 @@ import { logout } from '../actions/userAction';
 import { searchYoutube } from "../actions/youtubeSearch";
 import { Link, Redirect } from 'react-router-dom';
 // import { useHistory } from "react-router-dom";
-import history from '../history';
+// import history from '../history';
 
 const NavBar = ({ user, searchYoutube, signout }) => {
     const [searchKeyword, setSearchKeywork] = useState('');
@@ -15,7 +15,7 @@ const NavBar = ({ user, searchYoutube, signout }) => {
         e.preventDefault();
         searchYoutube(searchKeyword);
         // <Route exact path='/' render={(routeProps) => <Home {...routeProps} />} />
-        history.push("/");
+        // history.push("/");
         // <Redirect to={{pathname: '/'}} />
     }
 

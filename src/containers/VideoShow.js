@@ -7,8 +7,9 @@ const VideoShow = (props) => {
     const { videoId } = useParams();
     return (
         <>
+            {/* This is youtube video is */}
             <iframe title={videoId} src={youtubeEmbedLink + videoId} style={{'height': '800px', 'width': '1600px'}} />
-            <VideoInteract />
+            <VideoInteract youtube_video_id={videoId}/>
         </>
     )
 }

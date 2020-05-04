@@ -3,12 +3,12 @@ import AllComments from "../components/AllComments";
 
 
 
-const VideoInteract = () => {
+const VideoInteract = (props) => {
 
     return (
         <div className="row">
             <div className="col-9">
-                <AllComments />
+                <AllComments youtube_video_id={props.youtube_video_id}/>
             </div>
             <div className="col-3">
             </div>

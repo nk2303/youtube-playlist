@@ -12,7 +12,6 @@ const PlaylistCollection = ({getPlaylists, myPlaylists, deletePlaylist}) => {
 
     const handleDelete = (playlist_id) => {
         deletePlaylist(playlist_id);
-
     }
     
     
@@ -20,9 +19,14 @@ const PlaylistCollection = ({getPlaylists, myPlaylists, deletePlaylist}) => {
         <div className='row left-margin-5'>
             { myPlaylists.map( playlist => 
                 <div key={playlist.id} className='col-3 white-translucent-02 margin-10px radius-5px'>
-                    <h5 className='margin-10px'> {playlist.playlist_name}
+                    <div className='margin-10px'> {playlist.playlist_name}
                     <button type="button" class="close white" data-toggle="modal" data-target={`#deletePlaylist${playlist.id}`}>&times;</button>
-                    <div class="radius-5px modal fade" id={`deletePlaylist${playlist.id}`} tabindex="-1" role="dialog" aria-labelledby={`deletePlaylist${playlist.id}Label`} aria-hidden="true">
+                    <div 
+                        class="radius-5px modal fade" 
+                        id={`deletePlaylist${playlist.id}`} 
+                        tabindex="-1" role="dialog" 
+                        aria-labelledby={`deletePlaylist${playlist.id}Label`} 
+                        aria-hidden="true">
                     <div class="radius-5px modal-dialog" role="document">
                         <div class="modal-content">
                         <div class="modal-header">
@@ -40,15 +44,16 @@ const PlaylistCollection = ({getPlaylists, myPlaylists, deletePlaylist}) => {
                         </div>
                         </div>
                     </div>
-                </div>
-                    </h5>
+                    </div>
+                    </div>
                     
                     
                     {playlist.videos.map(video => <Video
                         className="radius-5px"
                         key={video.youtube_video_id}
-                        videoId={video.youtube_video_id}
+                        youtubeVideoId={video.youtube_video_id}
                         playlistId = {playlist.id}
+                        videoId = {video.id}
                     /> )}
             </div>) }
         </div>

@@ -11,11 +11,12 @@ import Account from './containers/Account';
 import About from './containers/About';
 import VideoShow from './containers/VideoShow';
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
-import history from './history';
+// import history from './history';
 
 const App = ({ user }) => {
   return (
-      <Router history={history}>
+      // <Router history={history}>
+      <Router>
         <NavBar />
         <Route exact path='/' render={(routeProps) => <Home {...routeProps} />} />
         <Route
