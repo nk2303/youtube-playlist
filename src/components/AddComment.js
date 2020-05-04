@@ -3,7 +3,7 @@ import {createComment} from '../actions/commentAction';
 import {connect} from 'react-redux';
 
 
-const AddComment = ({video_id}) => {
+const AddComment = ({videoInfoBE, createComment, userInfo}) => {
 
     const [content, setContent] = useState('');
 
@@ -11,9 +11,19 @@ const AddComment = ({video_id}) => {
         setContent(e.target.value);
     }
 
+    useEffect(() => {
+        createComment()
+    }, [])
+
+    const handleCommentSubmit = e => {
+        e.preventDefault();
+        e.stopPropagation();
+        createComment(content, userInfo.user.id, videoInfoBE.video.id);
+    }
+    
     return (
         <div>
-            <form onSubmit={"handleSubmit"}>
+            <form onSubmit={handleCommentSubmit}>
             <fieldset>
                 <div className="form-group margin-20">
                     <input
@@ -33,8 +43,8 @@ const AddComment = ({video_id}) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        createComment: (content, video_id) => createComment(content, video_id).then(dispatch)
+        createComment: (content, user_id, video_id) => createComment(content, user_id, video_id).then(dispatch)
     }
 }
 
-export default connect(null, mapDispatchToProps)(AddComment)
+export default connect(store => ({userInfo: store.userContext.user}), mapDispatchToProps)(AddComment)

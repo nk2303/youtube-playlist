@@ -56,11 +56,11 @@ export const Video = (props) => {
     return (
         <div className="card text-white light-grey mb-3 radius-5px">
             <div className="btn-group btn-block " role="group" aria-label="Basic example">
-                <button type="button" className="btn btn-secondary radius-5px" onClick={console.log("like button clicked")}>Comment</button>
+                <button type="button" className="btn btn-secondary radius-5px" >Comment</button>
                 <button type="button" className="btn btn-secondary" data-toggle="modal" data-target={`#${props.youtubeVideoId}_${props.playlistId}`}>Add +</button>
 
                 <div 
-                    className="modal fade" 
+                    className="modal fade " 
                     id={`${props.youtubeVideoId}_${props.playlistId}`} 
                     tabIndex="-1" role="dialog"
                     ref={elem => modal = elem}
@@ -100,8 +100,6 @@ export const Video = (props) => {
                     </div>
                 </div>
             </div>
-            {/* link pass vao video_id, video show fetch backend's youtube video id to render */}
-            {/* <Link to={`/videoshow/${props.youtubeVideoId}`} className="btn btn-secondary radius-5px" >Full Screen<span className="sr-only"></span></Link> */}
             <Link to={`/videoshow/${props.videoId}`} className="btn btn-secondary radius-5px" >Full Screen<span className="sr-only"></span></Link>
             </div>
             <iframe {...props} title={props.youtubeVideoId} videoId={props.videoId} src={youtubeEmbedLink + props.youtubeVideoId} />

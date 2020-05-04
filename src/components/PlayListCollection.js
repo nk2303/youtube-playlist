@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import {getMyPlaylists, deletePlaylist} from '../actions/playlistAction';
 
 
-const PlaylistCollection = ({getPlaylists, myPlaylists, deletePlaylist}) => {
+const PlaylistCollection = ({getPlaylists, userPlaylists, deletePlaylist}) => {
 
     useEffect(() => {
         getPlaylists()
@@ -17,30 +17,30 @@ const PlaylistCollection = ({getPlaylists, myPlaylists, deletePlaylist}) => {
     
     return (
         <div className='row left-margin-5'>
-            { myPlaylists.map( playlist => 
+            { userPlaylists.map( playlist => 
                 <div key={playlist.id} className='col-3 white-translucent-02 margin-10px radius-5px'>
                     <div className='margin-10px'> {playlist.playlist_name}
-                    <button type="button" class="close white" data-toggle="modal" data-target={`#deletePlaylist${playlist.id}`}>&times;</button>
+                    <button type="button" className="close white" data-toggle="modal" data-target={`#deletePlaylist${playlist.id}`}>&times;</button>
                     <div 
-                        class="radius-5px modal fade" 
+                        className="radius-5px modal fade" 
                         id={`deletePlaylist${playlist.id}`} 
-                        tabindex="-1" role="dialog" 
+                        tabIndex="-1" role="dialog" 
                         aria-labelledby={`deletePlaylist${playlist.id}Label`} 
                         aria-hidden="true">
-                    <div class="radius-5px modal-dialog" role="document">
-                        <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id={`deletePlaylist${playlist.id}Label`} >Delete playlist</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <div className="radius-5px modal-dialog" role="document">
+                        <div className="modal-content">
+                        <div className="modal-header">
+                            <h5 className="modal-title" id={`deletePlaylist${playlist.id}Label`} >Delete playlist</h5>
+                            <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-                        <div class="modal-body">
+                        <div className="modal-body">
                             <p>Deleting a playlist means you will lose all existing videos in this playlist: {playlist.playlist_name}. Are you sure ?</p>
                         </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary radius-5px" data-dismiss="modal">Cancel</button>
-                            <button onClick={() => handleDelete(playlist.id)} type="submit" class="btn btn-danger radius-5px">Delete</button>
+                        <div className="modal-footer">
+                            <button type="button" className="btn btn-secondary radius-5px" data-dismiss="modal">Cancel</button>
+                            <button onClick={() => handleDelete(playlist.id)} type="submit" className="btn btn-danger radius-5px">Delete</button>
                         </div>
                         </div>
                     </div>
@@ -67,4 +67,4 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-export default connect(store => ({myPlaylists: store.myPlaylists}), mapDispatchToProps)(PlaylistCollection)
+export default connect(store => ({userPlaylists: store.myPlaylists}), mapDispatchToProps)(PlaylistCollection)

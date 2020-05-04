@@ -1,15 +1,16 @@
 const BACKEND_DOMAIN = process.env.REACT_APP_BACKEND_DOMAIN;
-// const userContext = JSON.parse(localStorage.getItem('user'));
 let token = () => localStorage.getItem("token")
 
-export const createComment = (content, videoId) => {
+export const createComment = (content, user_id, video_id) => {
 
-    const comment = {
+    const input = {
         comment: {
             content,
-            videoId
+            user_id,
+            video_id
         }
     }
+    console.log("SEND NEW COMMENT HERE",input);
     return fetch(`${BACKEND_DOMAIN}/api/v1/comments`, {
         method: "POST",
         headers: {
@@ -17,9 +18,10 @@ export const createComment = (content, videoId) => {
             Accept: "application/json",
             Authorization: token()
         },
-        body: JSON.stringify(comment)
+        body: JSON.stringify(input)
     }).then(res => res.json())
     .then(res => {
+        console.log("NEW COMMENT HERE",res);
         if (res.error) {
             return {
                 type: "CREATE_COMMENT_ERROR",
