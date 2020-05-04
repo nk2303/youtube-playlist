@@ -8,7 +8,7 @@ const VideoInteract = (props) => {
     return (
         <div className="row">
             <div className="col-9">
-                <AllComments youtube_video_id={props.youtube_video_id}/>
+                <AllComments youtube_video_id={props.youtube_video_id} videoInfoBE={props.videoInfoBE}/>
             </div>
             <div className="col-3">
             </div>

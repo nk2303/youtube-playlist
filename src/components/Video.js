@@ -100,7 +100,9 @@ export const Video = (props) => {
                     </div>
                 </div>
             </div>
-            <Link to={`/videoshow/${props.youtubeVideoId}`} className="btn btn-secondary radius-5px" >Full Screen<span className="sr-only"></span></Link>
+            {/* link pass vao video_id, video show fetch backend's youtube video id to render */}
+            {/* <Link to={`/videoshow/${props.youtubeVideoId}`} className="btn btn-secondary radius-5px" >Full Screen<span className="sr-only"></span></Link> */}
+            <Link to={`/videoshow/${props.videoId}`} className="btn btn-secondary radius-5px" >Full Screen<span className="sr-only"></span></Link>
             </div>
             <iframe {...props} title={props.youtubeVideoId} videoId={props.videoId} src={youtubeEmbedLink + props.youtubeVideoId} />
         </div>

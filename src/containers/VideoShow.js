@@ -1,18 +1,36 @@
-import React from "react";
-import { useParams } from "react-router-dom";
-import VideoInteract from "./VideoInteract";
+import React, {useEffect} from 'react';
+import {connect} from 'react-redux'
+import { useParams } from 'react-router-dom';
+import VideoInteract from './VideoInteract';
+import { findVideo } from '../actions/videoAction';
 
 const youtubeEmbedLink = "https://www.youtube.com/embed/"
-const VideoShow = (props) => {
+const VideoShow = ({getVideo, findVideo}) => {
     const { videoId } = useParams();
-    return (
-        <>
-            {/* This is youtube video is */}
-            <iframe title={videoId} src={youtubeEmbedLink + videoId} style={{'height': '800px', 'width': '1600px'}} />
-            <VideoInteract youtube_video_id={videoId}/>
-        </>
-    )
+
+    useEffect(() =>{
+        findVideo(videoId)
+    }, [])
+
+    if (getVideo.video) {
+        return (
+            <>
+                <iframe title={getVideo.video.youtube_video_id} src={youtubeEmbedLink + getVideo.video.youtube_video_id} style={{'height': '800px', 'width': '1600px'}} />
+                <VideoInteract youtube_video_id={getVideo.video.youtube_video_id} videoInfoBE={getVideo}/>
+            </>
+        )
+    }
+    return (null)
 }
 
-export default VideoShow;
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        findVideo: (videoId) => findVideo(videoId, dispatch)
+    }
+}
+
+
+export default connect(store => ({getVideo: store.findVideo}), mapDispatchToProps)(VideoShow);
+
 
