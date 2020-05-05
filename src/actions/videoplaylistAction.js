@@ -2,67 +2,39 @@ const BACKEND_DOMAIN = process.env.REACT_APP_BACKEND_DOMAIN;
 // const userContext = JSON.parse(localStorage.getItem('user'));
 let token = () => localStorage.getItem("token")
 
-export const createPlaylist = (playlistName, description) => {
+export const createVideoPlaylist = (playlist_id, video_id, dispatch) => {
 
-    const playlist = {
-        playlist: {
-            playlist_name: playlistName,
-            description
-        }
+    const videoPlaylist = {
+        playlist_id,
+        video_id
     }
-    return fetch(`${BACKEND_DOMAIN}/api/v1/playlists`, {
+    return fetch(`${BACKEND_DOMAIN}/api/v1/playlist_videos`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
             Accept: "application/json",
             Authorization: token()
         },
-        body: JSON.stringify(playlist)
+        body: JSON.stringify(videoPlaylist)
     }).then(res => res.json())
     .then(res => {
         if (res.error) {
-            return {
-                type: "CREATE_PLAYLIST_ERROR",
+            dispatch({
+                type: "CREATE_PLAYLIST_VIDEO_ERROR",
                 error: res.error
-            };
+            });
         }
-        return {
-            type: "CREATE_PLAYLIST",
-            payload: res
+        else {
+            dispatch({
+                type: "CREATE_PLAYLIST_VIDEO",
+                payload: res.playlist_video
+            });
         }
     });
 }
 
-export const updateVideoPlaylist = (dispatch) => {
-    //api services fil would have a global token so I just have refrence without passing it in
-    return fetch(`${BACKEND_DOMAIN}/api/v1/playlists`, {
-        method: "GET",
-        headers: {
-            "Content-Type": "application/json",
-            Accept: "application/json",
-            Authorization: token()
-        },
-    }).then(res => res.json())
-    .then(res => {
-        if (res.message) {
-            return {
-                type: "GET_MY_PLAYLISTS_ERROR",
-                error: res.message
-            };
-        }
-        dispatch(
-            {
-                type: "GET_MY_PLAYLISTS",
-                payload: res
-            }
-        ) 
-    });
-}
-
-
-
-export const deletePlaylist = (playlist_id, dispatch) => {
-    fetch(`${BACKEND_DOMAIN}/api/v1/playlists/${playlist_id}`, {
+export const deleteVideoPlaylist = (playlist_id, video_id, dispatch) => {
+    fetch(`${BACKEND_DOMAIN}/api/v1/playlist_videos/${video_id}/${playlist_id}`, {
         method: "DELETE",
         headers: {
             "Content-Type": "application/json",
@@ -73,22 +45,17 @@ export const deletePlaylist = (playlist_id, dispatch) => {
     .then(res => {
         if (res.error) {
             dispatch( {
-                type: "DELETE_PLAYLIST_ERROR",
+                type: "DELETE_PLAYLIST_VIDEO_ERROR",
                 error: res.error
             });
         }
         else {
             dispatch(
                 {
-                    type: "DELETE_PLAYLIST",
-                    playlist_id: playlist_id
+                    type: "DELETE_PLAYLIST_VIDEO",
+                    payload: {playlist_id, video_id}
                 }
             );
         }
-    }).catch(err => {
-        dispatch( {
-            type: "DELETE_PLAYLIST_ERROR",
-            error: err
-        })
     });
 }

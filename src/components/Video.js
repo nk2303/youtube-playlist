@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import { Link } from 'react-router-dom';
-import {getMyPlaylists} from '../actions/playlistAction';
 import { connect } from 'react-redux';
 // import { render } from "@testing-library/react";
 // import { editPlaylist } from '../actions/playlistAction';
-import {updateVideoPlaylist} from '../actions/videoplaylistAction';
+import { createVideoPlaylist, deleteVideoPlaylist } from '../actions/videoplaylistAction';
 
 const youtubeEmbedLink = "https://www.youtube.com/embed/"
 export const Video = (props) => {
@@ -27,10 +26,15 @@ export const Video = (props) => {
     //properly map state to prop
     //next objective: 
 
+    //video id: props.videoId
     let modal;
 
-    const handleClose = (e) => {
+    const resetAllChanges = () => {
         setUserPlaylist(props.myPlaylists);
+    }
+
+    const handleClose = (e) => {
+        resetAllChanges();
     }
 
     const handlePlaylistChange = (targetPlaylist) => {
@@ -47,10 +51,18 @@ export const Video = (props) => {
     }
 
     const handleSubmit = (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        // getMyPlaylists(dispatch)
-        updateVideoPlaylist(props.youtubeVideoId, userPlaylist)
+        const checkPlaylists = [], uncheckPlaylists = [];
+        for(let i = 0; i < userPlaylist.length; i++) {
+            if (userPlaylist[i].videos.length > props.myPlaylists[i].videos.length) {
+                checkPlaylists.push(userPlaylist[i].id);
+            }
+            else if (userPlaylist[i].videos.length < props.myPlaylists[i].videos.length) {
+                uncheckPlaylists.push(userPlaylist[i].id);
+            }
+        }
+        const createPromise = checkPlaylists.map(playlistId => props.createVideoPlaylist(playlistId, props.videoId));
+        const deletePromise = uncheckPlaylists.map(playlistId => props.deleteVideoPlaylist(playlistId, props.videoId));
+        Promise.all(createPromise.concat(deletePromise));
     }
 
     return (
@@ -70,7 +82,7 @@ export const Video = (props) => {
                 <div className="modal-dialog" role="document">
                     <div className="modal-content">
                     <div className="modal-header">
-                        <div><iframe {...props} title={props.youtubeVideoId} src={youtubeEmbedLink + props.youtubeVideoId} /></div>
+                        <div><iframe title={props.youtubeVideoId} src={youtubeEmbedLink + props.youtubeVideoId} /></div>
                         <button type="button" className="close" data-dismiss="modal" aria-label="Close" onClick={handleClose}>
                         <div aria-hidden="true">&times;</div>
                         </button>
@@ -78,38 +90,40 @@ export const Video = (props) => {
                     </div>
                     <div className="modal-body row">
                         <legend className="col-5">Save to Playlist</legend>
-                        <div className="form-group col-7" onSubmit={() => handleSubmit(props.youtubeVideoId)}>
+                        {/* <div className="form-group col-7" onSubmit={() => handleSubmit(props.youtubeVideoId)}></div> */}
+                        <div className="form-group col-7" onSubmit={handleSubmit}>
                             {userPlaylist.map((playlist) => 
                                 <div key={playlist.id} className="custom-control custom-checkbox">
                                 <input 
                                     type="checkbox"
                                     className="custom-control-input"
-                                    id={`customCheck${playlist.id}${props.youtubeVideoId}`}
+                                    id={`customCheck${playlist.id}${props.youtubeVideoId}:${props.uniqueKey}`}
                                     //rerendering a lot of time
-                                    checked={`${playlist.videos.find( v => v.youtube_video_id == props.youtubeVideoId) ? 'check' : ''}`}
+                                    checked={`${playlist.videos.find( v => v.youtube_video_id === props.youtubeVideoId) ? 'check' : ''}`}
                                     onChange={() => handlePlaylistChange(playlist) }
                                     ></input>
-                                <label className="custom-control-label" htmlFor={`customCheck${playlist.id}${props.youtubeVideoId}`} >{playlist.playlist_name}</label>
+                                <label className="custom-control-label" htmlFor={`customCheck${playlist.id}${props.youtubeVideoId}:${props.uniqueKey}`} >{playlist.playlist_name}</label>
                             </div>)}
                         </div>
                     </div>
                     <div className="modal-footer">
                         <button onClick={handleClose} type="button" className="btn btn-secondary radius-5px" data-dismiss="modal">Close</button>
-                        <button onClick={() => handleSubmit(props.youtubeVideoId)} type="submit" className="btn btn-primary radius-5px">Save changes</button>
+                        <button onClick={handleSubmit} type="submit" className="btn btn-primary radius-5px" data-dismiss="modal">Save changes</button>
                     </div>
                     </div>
                 </div>
             </div>
             <Link to={`/videoshow/${props.videoId}`} className="btn btn-secondary radius-5px" >Full Screen<span className="sr-only"></span></Link>
             </div>
-            <iframe {...props} title={props.youtubeVideoId} videoId={props.videoId} src={youtubeEmbedLink + props.youtubeVideoId} />
+            <iframe title={props.youtubeVideoId} src={youtubeEmbedLink + props.youtubeVideoId} />
         </div>
     )
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        getPlaylists: () => getMyPlaylists(dispatch)
+        createVideoPlaylist: (playlistId, videoId) => createVideoPlaylist(playlistId, videoId, dispatch),
+        deleteVideoPlaylist: (playlistId, videoId) => deleteVideoPlaylist(playlistId, videoId, dispatch)
     }
 }
 

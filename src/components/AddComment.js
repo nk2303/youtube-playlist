@@ -14,11 +14,13 @@ const AddComment = ({videoInfoBE, createComment, userInfo}) => {
     useEffect(() => {
         createComment()
     }, [])
-
+    
     const handleCommentSubmit = e => {
         e.preventDefault();
         e.stopPropagation();
-        createComment(content, userInfo.user.id, videoInfoBE.video.id);
+        console.log("USER ID WHERE", userInfo)
+        console.log("VIDEO ID WHERE", videoInfoBE)
+        createComment(content, userInfo.id, videoInfoBE.video.id);
     }
     
     return (

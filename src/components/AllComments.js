@@ -4,7 +4,7 @@ import Comment from './Comment';
 import {getComments} from '../actions/commentAction';
 import AddComment from './AddComment';
 
-const AllComments = ({getVideoComments, getComments, videoInfoBE}) => {
+const AllComments = ({thisVideoComments, getComments, videoInfoBE}) => {
     useEffect(() => {
         getComments()
     }, [])
@@ -13,7 +13,7 @@ const AllComments = ({getVideoComments, getComments, videoInfoBE}) => {
         <div className="white-translucent-02 radius-5px margin-20 ">
             <div className="margin-20"> <h5>All comments</h5> </div>
             <AddComment videoInfoBE={videoInfoBE}/>
-            {getVideoComments.map(comment => 
+            {thisVideoComments.map(comment => 
                 <div className="white-translucent-02 radius-5px margin-20 "><Comment key={comment.id} comment={comment} /></div>)}
         </div>
         
@@ -26,5 +26,5 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-export default connect(store => ({getVideoComments: store.videoComments}), mapDispatchToProps)(AllComments)
+export default connect(store => ({thisVideoComments: store.targetVideo.video.comments}), mapDispatchToProps)(AllComments)
 

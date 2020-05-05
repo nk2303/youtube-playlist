@@ -1,6 +1,6 @@
 const BACKEND_DOMAIN = process.env.REACT_APP_BACKEND_DOMAIN;
 // const userContext = JSON.parse(localStorage.getItem('user'));
-let token = () => localStorage.getItem("token")
+const token = () => localStorage.getItem("token")
 
 export const updateVideoPlaylist = () => {}
 
@@ -17,16 +17,18 @@ export const findVideo = (videoId, dispatch) => {
     }).then(res => res.json())
     .then(res => {
         if (res.message) {
-            return {
+            dispatch({
                 type: "GET_VIDEO_ERROR",
                 error: res.message
-            };
+            });
         }
-        dispatch(
-            {
-                type: "FIND_VIDEO",
-                payload: res,
-            }
-        ) 
+        else {
+            dispatch(
+                {
+                    type: "FIND_VIDEO",
+                    payload: res,
+                }
+            );
+        }
     });
 }

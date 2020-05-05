@@ -51,6 +51,7 @@ const PlaylistCollection = ({getPlaylists, userPlaylists, deletePlaylist}) => {
                     {playlist.videos.map(video => <Video
                         className="radius-5px"
                         key={video.youtube_video_id}
+                        uniqueKey={`${playlist.id}:${video.youtube_video_id}`}
                         youtubeVideoId={video.youtube_video_id}
                         playlistId = {playlist.id}
                         videoId = {video.id}

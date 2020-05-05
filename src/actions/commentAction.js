@@ -10,7 +10,6 @@ export const createComment = (content, user_id, video_id) => {
             video_id
         }
     }
-    console.log("SEND NEW COMMENT HERE",input);
     return fetch(`${BACKEND_DOMAIN}/api/v1/comments`, {
         method: "POST",
         headers: {
@@ -21,7 +20,6 @@ export const createComment = (content, user_id, video_id) => {
         body: JSON.stringify(input)
     }).then(res => res.json())
     .then(res => {
-        console.log("NEW COMMENT HERE",res);
         if (res.error) {
             return {
                 type: "CREATE_COMMENT_ERROR",
@@ -46,7 +44,6 @@ export const getComments = (dispatch) => {
     }).then(res => res.json())
     
     .then(res => {
-        console.log("ALL COMMENTS HERE",res);
         if (res.message) {
             dispatch( {
                 type: "GET_COMMENTS_ERROR",

@@ -10,5 +10,5 @@ export default combineReducers({
     userContext: userReducer,
     myPlaylists: playlistReducer,
     videoComments: commentReducer,
-    findVideo: videoReducer
+    targetVideo: videoReducer
 });
