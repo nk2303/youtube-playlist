@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-// import { render } from "@testing-library/react";
-// import { editPlaylist } from '../actions/playlistAction';
 import { createVideoPlaylist, deleteVideoPlaylist } from '../actions/videoplaylistAction';
 
 const youtubeEmbedLink = "https://www.youtube.com/embed/"
@@ -10,23 +8,6 @@ export const Video = (props) => {
 
     const [userPlaylist, setUserPlaylist] = useState(props.myPlaylists);
 
-    //1.Adding a video to a playlist when making relationship, is to identify the information about the video,
-    //2. Get the video Id, playlist id, get video id, get playlist id, pass in some action that make the fetch
-    //create or delete, adding = create relationship, if it's delete, make fetch request to DELETE.
-    //database have to look into 2 tables, and join tables,
-    //Call API, add this playlist and video together, make record of join table, 
-    //API will send some info back to me, up to me when I modify
-    //the backend, the most useful thing is an updated list of all your playlist.
-    //Once the relationship is built in the backend, whatever info sent to the front end, will be used to create in the react store
-    //in redux store, have playlist array, ""
-    //we only edit the playlist store. dispatch an aciton to the store with the new playlist for the payload 
-    //reducer update playlist USE MAP function.
-    //Pets lab in mod 4.
-    //last step: That reducer, when return that new state, that new state will automatically injected into my video comonent
-    //properly map state to prop
-    //next objective: 
-
-    //video id: props.videoId
     let modal;
 
     const resetAllChanges = () => {
@@ -90,7 +71,6 @@ export const Video = (props) => {
                     </div>
                     <div className="modal-body row">
                         <legend className="col-5">Save to Playlist</legend>
-                        {/* <div className="form-group col-7" onSubmit={() => handleSubmit(props.youtubeVideoId)}></div> */}
                         <div className="form-group col-7" onSubmit={handleSubmit}>
                             {userPlaylist.map((playlist) => 
                                 <div key={playlist.id} className="custom-control custom-checkbox">
@@ -98,7 +78,6 @@ export const Video = (props) => {
                                     type="checkbox"
                                     className="custom-control-input"
                                     id={`customCheck${playlist.id}${props.youtubeVideoId}:${props.uniqueKey}`}
-                                    //rerendering a lot of time
                                     checked={`${playlist.videos.find( v => v.youtube_video_id === props.youtubeVideoId) ? 'check' : ''}`}
                                     onChange={() => handlePlaylistChange(playlist) }
                                     ></input>

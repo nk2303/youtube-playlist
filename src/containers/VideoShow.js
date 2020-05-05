@@ -12,11 +12,11 @@ const VideoShow = ({targetVideo, findVideo}) => {
         findVideo(videoId)
     }, []);
 
-    if (targetVideo.video) {
+    if (targetVideo) {
         return (
             <>
-                <iframe title={targetVideo.video.youtube_video_id} src={youtubeEmbedLink + targetVideo.video.youtube_video_id} style={{'height': '800px', 'width': '1600px'}} />
-                <VideoInteract youtube_video_id={targetVideo.video.youtube_video_id} videoInfoBE={targetVideo}/>
+                <iframe title={targetVideo.youtube_video_id} src={youtubeEmbedLink + targetVideo.youtube_video_id} style={{'height': '800px', 'width': '1600px'}} />
+                <VideoInteract youtube_video_id={targetVideo.youtube_video_id} videoInfoBE={targetVideo}/>
             </>
         )
     }

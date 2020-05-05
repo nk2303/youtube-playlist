@@ -28,37 +28,11 @@ export const createComment = (content, user_id, video_id) => {
         }
         return {
             type: "CREATE_COMMENT",
-            payload: res
+            payload: res.comment
         }
     });
 }
 
-export const getComments = (dispatch) => {
-    fetch(`${BACKEND_DOMAIN}/api/v1/comments`, {
-        method: "GET",
-        headers: {
-            "Content-Type": "application/json",
-            Accept: "application/json",
-            Authorization: token()
-        }, 
-    }).then(res => res.json())
-    
-    .then(res => {
-        if (res.message) {
-            dispatch( {
-                type: "GET_COMMENTS_ERROR",
-                error: res.message
-            });
-        }
-        else{
-        dispatch(
-            {
-                type: "GET_COMMENTS",
-                payload: res
-            }
-        ) }
-    });
-}
 
 
 
@@ -89,7 +63,7 @@ export const deleteComment = (comment_id, dispatch) => {
     }).catch(err => {
         dispatch( {
             type: "DELETE_COMMENT_ERROR",
-            error: err
+            error: {comment_id}
         })
     });
 }

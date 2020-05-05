@@ -30,7 +30,7 @@ const Comment = ({comment, deleteComment}) => {
                         </div>
                         <div className="modal-footer">
                             <button type="button" className="btn btn-secondary radius-5px" data-dismiss="modal">Cancel</button>
-                            <button onClick={() => handleCommentDelete(comment.id)} type="submit" className="btn btn-danger radius-5px">Delete</button>
+                            <button onClick={() => handleCommentDelete(comment.id)} type="submit" className="btn btn-danger radius-5px" data-dismiss="modal">Delete</button>
                         </div>
                     </div>
                 </div>

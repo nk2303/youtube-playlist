@@ -18,9 +18,7 @@ const AddComment = ({videoInfoBE, createComment, userInfo}) => {
     const handleCommentSubmit = e => {
         e.preventDefault();
         e.stopPropagation();
-        console.log("USER ID WHERE", userInfo)
-        console.log("VIDEO ID WHERE", videoInfoBE)
-        createComment(content, userInfo.id, videoInfoBE.video.id);
+        createComment(content, userInfo.id, videoInfoBE.id);
     }
     
     return (
