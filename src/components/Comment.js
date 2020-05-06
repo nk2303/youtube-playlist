@@ -9,7 +9,7 @@ const Comment = ({comment, deleteComment}) => {
     }
 
     return (
-        <div className="margin-20">
+        <div className="margin-20 padding-5">
             <button type="button" className="close white" data-toggle="modal" data-target={`#deleteComment${comment.id}`}>&times;</button>
             <div 
                 className="radius-5px modal fade" 
@@ -35,6 +35,8 @@ const Comment = ({comment, deleteComment}) => {
                     </div>
                 </div>
             </div>
+            {console.log(comment.user)}
+            <p>{comment.user}</p>
             <p>{comment.content}</p>
         </div>
         

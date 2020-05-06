@@ -24,13 +24,13 @@ const CreatePlaylist = ({createPlaylist}) => {
     }
 
     return (
-        <div className='row'>
+        <div className='col '>
             <button
                 type="submit"
-                className="btn btn-info radius-5px btn-block margin-20"
+                className="width-300px btn btn-secondary radius-5px"
                 data-toggle="modal"
-                data-target="#createPlaylist" >Create new Playlist</button>
-            <div className="modal fade " id="createPlaylist" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                data-target="#createPlaylist" >+ Add new playlist</button>
+            <div className="modal fade " id="createPlaylist" tabIndex="-1" role="dialog" aria-labelledby="createPlaylistLabel" aria-hidden="true">
             <div className="modal-dialog" role="document">
                 <div className="modal-content radius-5px">
                 <div className="modal-header">
@@ -64,7 +64,7 @@ const CreatePlaylist = ({createPlaylist}) => {
                                     value={description}
                                     ></textarea>
                             </div>
-                            <button type="submit" className="btn btn-primary radius-5px">Create Playlist</button>
+                            <button type="submit" className="btn btn-primary radius-5px" >Create Playlist</button>
                         </fieldset>
                     </form>
                 </div>

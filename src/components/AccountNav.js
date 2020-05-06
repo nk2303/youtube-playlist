@@ -1,8 +1,9 @@
 import React from 'react';
-import CreatePlaylist from './CreatePlaylist';
+import {connect} from 'react-redux';
+import { logout } from '../actions/userAction';
 
 
-const AccountNav = (props) => {
+const AccountNav = ({signout}) => {
 
     return (
         <div>
@@ -12,9 +13,14 @@ const AccountNav = (props) => {
                 <a href="#" className="list-group-item list-group-item-action">My Account</a> 
             </div>
             <br/>
-            <CreatePlaylist />
+            <button className="radius-5px btn btn-danger" onClick={signout}>Sign out</button>
         </div>      
     )
 }
 
-export default AccountNav
+export default connect(store => ({user: store.userContext.user}),
+    (dispatch) => {
+        return {
+            signout: () => dispatch(logout())
+        };
+    })(AccountNav)

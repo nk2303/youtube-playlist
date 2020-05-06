@@ -33,12 +33,12 @@ export const login = (username, password) => {
     return loginSignup(`${BACKEND_DOMAIN}/api/v1/login`, username, password);
 }
 
-export const signup = (email, username, fullName, password) => {
+export const signup = (email, username, full_name, password) => {
 
     const user = {
         user: {
             username,
-            full_name: fullName,
+            full_name,
             email,
             password
         }

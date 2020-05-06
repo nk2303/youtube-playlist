@@ -17,8 +17,8 @@ const PlaylistCollection = ({getPlaylists, userPlaylists, deletePlaylist}) => {
     return (
         <div className='row left-margin-5'>
             { userPlaylists.map( playlist => 
-                <div key={playlist.id} className='width-300px white-translucent-02 margin-10px radius-5px'>
-                    <div className='margin-15px'> {playlist.playlist_name}
+                <div key={playlist.id} className='width-300px white-translucent-02 margin-10 radius-5px'>
+                    <div className='margin-15'> {playlist.playlist_name}
                         <button type="button" className="close white" data-toggle="modal" data-target={`#deletePlaylist${playlist.id}`}>&times;</button>
                             <div className="radius-5px modal fade" 
                                 id={`deletePlaylist${playlist.id}`} 
@@ -38,7 +38,7 @@ const PlaylistCollection = ({getPlaylists, userPlaylists, deletePlaylist}) => {
                                         </div>
                                         <div className="modal-footer">
                                             <button type="button" className="btn btn-secondary radius-5px" data-dismiss="modal">Cancel</button>
-                                            <button onClick={() => handleDelete(playlist.id)} type="submit" className="btn btn-danger radius-5px">Delete</button>
+                                            <button onClick={() => handleDelete(playlist.id)} type="submit" data-dismiss="modal" className="btn btn-danger radius-5px">Delete</button>
                                         </div>
                                     </div>
                                 </div>

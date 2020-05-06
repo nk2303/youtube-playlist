@@ -6,7 +6,7 @@ const Account = (props) => {
     return (
         <div>
             <div className="col-2"></div>
-            <AllPlaylist className="col-10 left-margin-5"/>
+            <AllPlaylist className="col-10"/>
         </div>
     )
 }

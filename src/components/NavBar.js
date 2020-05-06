@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 import { logout } from '../actions/userAction';
 import { searchYoutube } from "../actions/youtubeSearch";
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
 const NavBar = ({ user, searchYoutube, signout }) => {
     const [searchKeyword, setSearchKeywork] = useState('');
@@ -11,6 +11,7 @@ const NavBar = ({ user, searchYoutube, signout }) => {
     const handleSearch = (e) => {
         e.preventDefault();
         searchYoutube(searchKeyword);
+        return <Redirect to={{pathname: '/'}} />
     }
 
     const handleChange = (e) => {
@@ -34,14 +35,14 @@ const NavBar = ({ user, searchYoutube, signout }) => {
                         <Link to='/about' className="nav-link" >About<span className="sr-only">(current)</span></Link>
                     </li>
                     <li>
-                    { user ? <button className="radius-5px btn btn-danger" onClick={signout}>Sign out</button> : null }
+                    {/* { user ? <button className="radius-5px btn btn-primary" onClick={signout}>Sign out</button> : null } */}
                     </li>
                 </ul>
                 <form className="form-inline my-2 my-lg-0" onSubmit={handleSearch}>
                     <input
                         className="form-control mr-sm-2 radius-5px min-width-500"
                         type="text"
-                        placeholder="Search" 
+                        placeholder="Search for youtube videos..." 
                         onChange={(e) => handleChange(e)} value={searchKeyword}
                     />
                     <button onClick={handleSearch} className="radius-5px btn btn-secondary my-2 my-sm-0" type="button">Search</button>

@@ -47,18 +47,16 @@
   background-color: rgba(255,255,255,0.1)
 }
 
-.margin-10px { margin: 10px }
-
-.margin-15px { margin: 15px }
+.margin-10 { margin: 10px }
+.margin-20 { margin: 20px;}
+.margin-25 { margin: 25px;}
+.margin-15 { margin: 15px }
 
 .radius-5px {border-radius: 5px !important }
 
 .text-center {text-align: center}
 
 .padding-2 {margin: 2px}
-
-.min-width-500 {min-width: 500px}
-
 .padding-2-rem {padding: 2rem;}
 
 .light-grey { background-color: #EBECF0 }
@@ -67,22 +65,25 @@
 
 .left-margin-5 { margin-left: 5px !important;}
 
-.margin-20 { margin: 20px;}
+
+.padding-5 {padding: 5px; }
+.padding-10 {padding: 10px; }
 
 .dark-bg-color { background-color: #2C3E4F}
 
 .max-height-w { max-height: 800px }
 
 .width-300px { width: 300px }
+.min-width-300 { min-width: 300px }
+.min-width-500 {min-width: 500px}
+.width-long{ width: 10000000px}
 
-/* .width-long{ width: 10000000px} */
-
-.testimonial-group > .row {
+/* .testimonial-group > .row {
   overflow-x: auto;
   white-space: nowrap;
 }
 .testimonial-group > .row > .col-xs-4 {
   display: inline-block;
   float: none;
-}
+} */
 
