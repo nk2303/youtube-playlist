@@ -27,7 +27,7 @@ const CreatePlaylist = ({createPlaylist}) => {
         <div className='row'>
             <button
                 type="submit"
-                className="btn btn-primary radius-5px btn-block"
+                className="btn btn-info radius-5px btn-block margin-20"
                 data-toggle="modal"
                 data-target="#createPlaylist" >Create new Playlist</button>
             <div className="modal fade " id="createPlaylist" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

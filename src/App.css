@@ -49,6 +49,8 @@
 
 .margin-10px { margin: 10px }
 
+.margin-15px { margin: 15px }
+
 .radius-5px {border-radius: 5px !important }
 
 .text-center {text-align: center}
@@ -66,3 +68,21 @@
 .left-margin-5 { margin-left: 5px !important;}
 
 .margin-20 { margin: 20px;}
+
+.dark-bg-color { background-color: #2C3E4F}
+
+.max-height-w { max-height: 800px }
+
+.width-300px { width: 300px }
+
+/* .width-long{ width: 10000000px} */
+
+.testimonial-group > .row {
+  overflow-x: auto;
+  white-space: nowrap;
+}
+.testimonial-group > .row > .col-xs-4 {
+  display: inline-block;
+  float: none;
+}
+

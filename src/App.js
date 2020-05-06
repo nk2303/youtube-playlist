@@ -14,13 +14,6 @@ import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 
 const App = ({ user }) => {
   return (
-       // <Router history={history}>
-            //app call api and set user right away
-            //redux action
-            //dispacth that new user to the store
-            //make sure to include a mapDispacthToPropr in app, trigger this aciton, 
-            //received dispacthc, get the user 
-            //dispatch user to the store
       <Router>
         <NavBar />
         <Route exact path='/' render={(routeProps) => <Home {...routeProps} />} />

@@ -3,6 +3,34 @@ const token = () => localStorage.getItem("token")
 
 export const updateVideoPlaylist = () => {}
 
+export const createVideo = (youtube_video_id) => {
+
+    const input = {
+        youtube_video_id
+    }
+
+    return fetch(`${BACKEND_DOMAIN}/api/v1/videos`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+            Authorization: token()
+        },
+        body: JSON.stringify(input)
+    }).then(res => res.json())
+    .then(res => {
+        if (res.error) {
+            return {
+                type: "CREATE_VIDEO_ERROR",
+                error: res.error
+            };
+        }
+        return {
+            type: "CREATE_VIDEO",
+            payload: res.video
+        }
+    });
+}
 
 export const findVideo = (videoId, dispatch) => {
     return fetch(`${BACKEND_DOMAIN}/api/v1/videos/${videoId}`, {

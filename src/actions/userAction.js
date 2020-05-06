@@ -1,5 +1,5 @@
 const BACKEND_DOMAIN = process.env.REACT_APP_BACKEND_DOMAIN;
-// const token = () => localStorage.getItem("token");
+
 const loginSignup = (apiUrl, username, password) => {
     const user = {
         user: {

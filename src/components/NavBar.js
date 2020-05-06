@@ -3,20 +3,14 @@ import { connect } from "react-redux";
 import { logout } from '../actions/userAction';
 import { searchYoutube } from "../actions/youtubeSearch";
 import { Link } from 'react-router-dom';
-// import { useHistory } from "react-router-dom";
-// import history from '../history';
 
 const NavBar = ({ user, searchYoutube, signout }) => {
     const [searchKeyword, setSearchKeywork] = useState('');
-    // let history = useHistory();
 
 
     const handleSearch = (e) => {
         e.preventDefault();
         searchYoutube(searchKeyword);
-        // <Route exact path='/' render={(routeProps) => <Home {...routeProps} />} />
-        // history.push("/");
-        // <Redirect to={{pathname: '/'}} />
     }
 
     const handleChange = (e) => {

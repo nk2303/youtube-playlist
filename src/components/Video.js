@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { createVideoPlaylist, deleteVideoPlaylist } from '../actions/videoplaylistAction';
+import {createVideo} from '../actions/videoAction';
 
 const youtubeEmbedLink = "https://www.youtube.com/embed/"
 export const Video = (props) => {
@@ -41,13 +42,24 @@ export const Video = (props) => {
                 uncheckPlaylists.push(userPlaylist[i].id);
             }
         }
-        const createPromise = checkPlaylists.map(playlistId => props.createVideoPlaylist(playlistId, props.videoId));
-        const deletePromise = uncheckPlaylists.map(playlistId => props.deleteVideoPlaylist(playlistId, props.videoId));
-        Promise.all(createPromise.concat(deletePromise));
+
+        const makePromise = (videoId) => {
+            const createPromise = checkPlaylists.map(playlistId => props.createVideoPlaylist(playlistId, videoId));
+            const deletePromise = uncheckPlaylists.map(playlistId => props.deleteVideoPlaylist(playlistId, videoId));
+            Promise.all(createPromise.concat(deletePromise));
+        }
+        if (!props.videoId) {
+            createVideo(props.youtubeVideoId).then(action => {
+                makePromise(action.payload.id);
+            });
+        }
+        else{
+            makePromise(props.videoId)
+        }
     }
 
     return (
-        <div className="card text-white light-grey mb-3 radius-5px">
+        <div className="card text-white light-grey mb-3 radius-5px margin-10px">
             <div className="btn-group btn-block " role="group" aria-label="Basic example">
                 <button type="button" className="btn btn-secondary radius-5px" >Comment</button>
                 <button type="button" className="btn btn-secondary" data-toggle="modal" data-target={`#${props.youtubeVideoId}_${props.playlistId}`}>Add +</button>
@@ -65,7 +77,7 @@ export const Video = (props) => {
                     <div className="modal-header">
                         <div><iframe title={props.youtubeVideoId} src={youtubeEmbedLink + props.youtubeVideoId} /></div>
                         <button type="button" className="close" data-dismiss="modal" aria-label="Close" onClick={handleClose}>
-                        <div aria-hidden="true">&times;</div>
+                            <div aria-hidden="true">&times;</div>
                         </button>
                         
                     </div>
@@ -79,9 +91,12 @@ export const Video = (props) => {
                                     className="custom-control-input"
                                     id={`customCheck${playlist.id}${props.youtubeVideoId}:${props.uniqueKey}`}
                                     checked={`${playlist.videos.find( v => v.youtube_video_id === props.youtubeVideoId) ? 'check' : ''}`}
-                                    onChange={() => handlePlaylistChange(playlist) }
-                                    ></input>
-                                <label className="custom-control-label" htmlFor={`customCheck${playlist.id}${props.youtubeVideoId}:${props.uniqueKey}`} >{playlist.playlist_name}</label>
+                                    onChange={() => handlePlaylistChange(playlist) }>
+                                </input>
+                                <label 
+                                    className="custom-control-label" 
+                                    htmlFor={`customCheck${playlist.id}${props.youtubeVideoId}:${props.uniqueKey}`} >{playlist.playlist_name}
+                                </label>
                             </div>)}
                         </div>
                     </div>
@@ -94,7 +109,8 @@ export const Video = (props) => {
             </div>
             <Link to={`/videoshow/${props.videoId}`} className="btn btn-secondary radius-5px" >Full Screen<span className="sr-only"></span></Link>
             </div>
-            <iframe title={props.youtubeVideoId} src={youtubeEmbedLink + props.youtubeVideoId} />
+            <iframe className="radius-5px" title={props.youtubeVideoId} src={youtubeEmbedLink + props.youtubeVideoId} />
+            
         </div>
     )
 }
@@ -102,7 +118,8 @@ export const Video = (props) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         createVideoPlaylist: (playlistId, videoId) => createVideoPlaylist(playlistId, videoId, dispatch),
-        deleteVideoPlaylist: (playlistId, videoId) => deleteVideoPlaylist(playlistId, videoId, dispatch)
+        deleteVideoPlaylist: (playlistId, videoId) => deleteVideoPlaylist(playlistId, videoId, dispatch),
+        // createVideo: (youtubeVideoId) => createVideo(youtubeVideoId).then(dispatch)
     }
 }
 
