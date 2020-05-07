@@ -64,7 +64,7 @@ const CreatePlaylist = ({createPlaylist}) => {
                                     value={description}
                                     ></textarea>
                             </div>
-                            <button type="submit" className="btn btn-primary radius-5px" >Create Playlist</button>
+                            <button onClick={handleSubmit} type="submit" className="btn btn-primary radius-5px" data-dismiss="modal">Create Playlist</button>
                         </fieldset>
                     </form>
                 </div>
