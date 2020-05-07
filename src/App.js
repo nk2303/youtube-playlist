@@ -14,14 +14,6 @@ import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 
 const App = ({ user }) => {
 
-  const [searchTrigger, setSearchTrigger] = useState(false);
-
-  // const triggerSearch = () => {
-  //   console.log("IGOT TO HERE")
-  //   (searchTrigger) ?
-  //   setSearchTrigger(false) : setSearchTrigger(true)
-  // }
-
   return (
       <Router>
         <NavBar/>
@@ -39,7 +31,6 @@ const App = ({ user }) => {
           render={(routeProps) =>
               user ? <Redirect to={{pathname: '/account'}} /> : <LoginPage {...routeProps} />} />
         <Route exact path='/about' render={(routeProps) => <About {...routeProps} />} />
-        <Route path="/" component={Home} />
         <Route exact path='/videoshow/:videoId' render={(routeProps) => <VideoShow {...routeProps} />} />
       </Router>
   );

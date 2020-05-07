@@ -7,11 +7,11 @@ const AllComments = ({thisVideoComments, videoInfoBE}) => {
 
 
     return (
-        <div className="white-translucent-02 radius-5px margin-20 ">
+        <div className="black-bg radius-5px margin-20 ">
             <div className="margin-20"> <h5>All comments</h5> </div>
             <AddComment videoInfoBE={videoInfoBE}/>
             {thisVideoComments.map(comment => 
-                <div className="white-translucent-02 radius-5px margin-20 ">
+                <div className="dark-bg radius-5px margin-10 ">
                     <Comment key={comment.id} comment={comment} />
                 </div>)}
         </div>
