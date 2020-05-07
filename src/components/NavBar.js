@@ -2,16 +2,17 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 import { logout } from '../actions/userAction';
 import { searchYoutube } from "../actions/youtubeSearch";
-import { Link, Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { useHistory } from "react-router-dom";
 
 const NavBar = ({ user, searchYoutube, signout }) => {
     const [searchKeyword, setSearchKeywork] = useState('');
-
+    const history = useHistory();
 
     const handleSearch = (e) => {
         e.preventDefault();
+        history.push('/');
         searchYoutube(searchKeyword);
-        return <Redirect to={{pathname: '/'}} />
     }
 
     const handleChange = (e) => {

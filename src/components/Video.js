@@ -61,7 +61,7 @@ export const Video = (props) => {
     return (
         <div className="card text-white light-grey mb-3 radius-5px margin-10">
             <div className="btn-group btn-block " role="group" aria-label="Basic example">
-                <button type="button" className="btn btn-secondary radius-5px" >Comment</button>
+                {/* <button type="button" className="btn btn-secondary radius-5px" >Comment</button> */}
                 <button type="button" className="btn btn-secondary" data-toggle="modal" data-target={`#${props.youtubeVideoId}_${props.playlistId}`}>Add +</button>
 
                 <div 

@@ -2,7 +2,7 @@ import React from "react";
 import {connect} from 'react-redux';
 import { deleteComment} from '../actions/commentAction';
 
-const Comment = ({comment, deleteComment}) => {
+const Comment = ({comment, deleteComment, user}) => {
 
     const handleCommentDelete =(comment_id) => {
         deleteComment(comment_id)
@@ -50,4 +50,4 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 
-export default connect(null, mapDispatchToProps)(Comment)
+export default connect(store => ({user: store.userContext.user}), mapDispatchToProps)(Comment)

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { connect } from "react-redux";
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -13,16 +13,25 @@ import VideoShow from './containers/VideoShow';
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 
 const App = ({ user }) => {
+
+  const [searchTrigger, setSearchTrigger] = useState(false);
+
+  // const triggerSearch = () => {
+  //   console.log("IGOT TO HERE")
+  //   (searchTrigger) ?
+  //   setSearchTrigger(false) : setSearchTrigger(true)
+  // }
+
   return (
       <Router>
-        <NavBar />
+        <NavBar/>
         <Route exact path='/' render={(routeProps) => <Home {...routeProps} />} />
         <Route
-          exact
           path="/account" 
           render={(routeProps) => 
               user ? <Account {...routeProps} />
-               : <Redirect to={{pathname: '/login', state: { from: routeProps.location }}} />}
+               : <Redirect to={{pathname: '/login', state: { from: routeProps.location }}} />
+            }
           />
         <Route
           exact 
@@ -30,6 +39,7 @@ const App = ({ user }) => {
           render={(routeProps) =>
               user ? <Redirect to={{pathname: '/account'}} /> : <LoginPage {...routeProps} />} />
         <Route exact path='/about' render={(routeProps) => <About {...routeProps} />} />
+        <Route path="/" component={Home} />
         <Route exact path='/videoshow/:videoId' render={(routeProps) => <VideoShow {...routeProps} />} />
       </Router>
   );
