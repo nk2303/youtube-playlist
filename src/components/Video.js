@@ -59,9 +59,9 @@ export const Video = (props) => {
     }
 
     return (
-        <div className="card text-white light-grey mb-3 radius-5px margin-10">
-            <div className="btn-group btn-block " role="group" aria-label="Basic example">
-                <button type="button" className="btn btn-secondary" data-toggle="modal" data-target={`#${props.youtubeVideoId}_${props.playlistId}`}>Add +</button>
+        <div className="card text-white video-btn mb-3 radius-5px margin-10">
+            <div className="btn-group btn-block radius-5px " role="group" aria-label="Basic example">
+                <button type="button" className="video-btn btn radius-5px" data-toggle="modal" data-target={`#${props.youtubeVideoId}_${props.playlistId}`}>Add +</button>
 
                 <div 
                     className="modal fade" 
@@ -107,9 +107,9 @@ export const Video = (props) => {
                 </div>
             </div>
             {(!props.videoId) ?
-            <Link to={`/videoshow/${props.youtubeVideoId}`} className="btn btn-secondary radius-5px" >Full Screen<span className="sr-only"></span></Link>
+            <Link to={`/videoshow/${props.youtubeVideoId}`} className="btn video-btn radius-5px" >Full Screen<span className="sr-only"></span></Link>
             :
-            <Link to={`/videoshow/${props.videoId}`} className="btn btn-secondary radius-5px" >Full Screen<span className="sr-only"></span></Link>}                
+            <Link to={`/videoshow/${props.videoId}`} className="btn video-btn radius-5px" >Full Screen<span className="sr-only"></span></Link>}                
             </div>
             <iframe className="radius-5px" title={props.youtubeVideoId} src={youtubeEmbedLink + props.youtubeVideoId} />
             

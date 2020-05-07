@@ -17,8 +17,8 @@ const PlaylistCollection = ({getPlaylists, userPlaylists, deletePlaylist}) => {
     return (
         <div className='row left-margin-5'>
             { userPlaylists.map( playlist => 
-                <div key={playlist.id} className='width-300px margin-10 radius-5px playlist-bg'>
-                    <div className='margin-15'> {playlist.playlist_name}
+                <div key={playlist.id} className='width-300px margin-10 radius-5px dark-bg'>
+                    <div className='text-light card-title'> {playlist.playlist_name}
                         <button type="button" className="close white" data-toggle="modal" data-target={`#deletePlaylist${playlist.id}`}>&times;</button>
                             <div className="radius-5px modal fade" 
                                 id={`deletePlaylist${playlist.id}`} 

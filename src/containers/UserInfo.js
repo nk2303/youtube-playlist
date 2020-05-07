@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 const UserInfo = ({user}) => {
 
     return (
-        <div className='dark-bg min-h-playlists'> 
+        <div className='black-bg min-h-playlists'> 
             <div className='row'>
                 <div className='margin-25 width-300px'><h4 className="left-pad-20 text-muted">My information</h4> </div>
             </div>
