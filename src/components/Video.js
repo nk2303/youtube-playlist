@@ -61,7 +61,6 @@ export const Video = (props) => {
     return (
         <div className="card text-white light-grey mb-3 radius-5px margin-10">
             <div className="btn-group btn-block " role="group" aria-label="Basic example">
-                {/* <button type="button" className="btn btn-secondary radius-5px" >Comment</button> */}
                 <button type="button" className="btn btn-secondary" data-toggle="modal" data-target={`#${props.youtubeVideoId}_${props.playlistId}`}>Add +</button>
 
                 <div 
@@ -107,7 +106,7 @@ export const Video = (props) => {
                     </div>
                 </div>
             </div>
-            {(!props.videoId) ? //moi lan kiem thi bo vo db?
+            {(!props.videoId) ?
             <Link to={`/videoshow/${props.youtubeVideoId}`} className="btn btn-secondary radius-5px" >Full Screen<span className="sr-only"></span></Link>
             :
             <Link to={`/videoshow/${props.videoId}`} className="btn btn-secondary radius-5px" >Full Screen<span className="sr-only"></span></Link>}                
@@ -121,8 +120,7 @@ export const Video = (props) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         createVideoPlaylist: (playlistId, videoId) => createVideoPlaylist(playlistId, videoId, dispatch),
-        deleteVideoPlaylist: (playlistId, videoId) => deleteVideoPlaylist(playlistId, videoId, dispatch),
-        // createVideo: (youtubeVideoId) => createVideo(youtubeVideoId).then(dispatch)
+        deleteVideoPlaylist: (playlistId, videoId) => deleteVideoPlaylist(playlistId, videoId, dispatch)
     }
 }
 

@@ -34,7 +34,7 @@ export const createPlaylist = (playlist_name, description) => {
 }
 
 export const getMyPlaylists = (dispatch) => {
-    //api services fil would have a global token so I just have refrence without passing it in
+
     return fetch(`${BACKEND_DOMAIN}/api/v1/playlists`, {
         method: "GET",
         headers: {

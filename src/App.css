@@ -50,7 +50,7 @@ body {
   background-color: rgba(50,70,200,0.1)
 }
 
-.playlist-bg { background-color: #35404a !important}
+.playlist-bg { background-color: #36404d !important; border: 0px !important}
 
 .margin-10 { margin: 10px }
 .margin-20 { margin: 20px;}
@@ -70,6 +70,7 @@ body {
 .white {color: white !important}
 
 .left-margin-5 { margin-left: 5px !important;}
+.left-pad-20 { margin-left: 20px;}
 
 
 .padding-5 {padding: 5px; }

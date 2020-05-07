@@ -35,9 +35,6 @@ const NavBar = ({ user, searchYoutube, signout }) => {
                     <li className="nav-item">
                         <Link to='/about' className="nav-link" >About<span className="sr-only">(current)</span></Link>
                     </li>
-                    <li>
-                    {/* { user ? <button className="radius-5px btn btn-primary" onClick={signout}>Sign out</button> : null } */}
-                    </li>
                 </ul>
                 <form className="form-inline my-2 my-lg-0" onSubmit={handleSearch}>
                     <input

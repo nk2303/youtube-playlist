@@ -1,5 +1,4 @@
 const BACKEND_DOMAIN = process.env.REACT_APP_BACKEND_DOMAIN;
-// const userContext = JSON.parse(localStorage.getItem('user'));
 let token = () => localStorage.getItem("token")
 
 export const createVideoPlaylist = (playlist_id, video_id, dispatch) => {
