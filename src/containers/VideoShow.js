@@ -14,10 +14,10 @@ const VideoShow = ({targetVideo, findVideo}) => {
 
     if (targetVideo) {
         return (
-            <>
+            <div className="black-bg">
                 <iframe title={targetVideo.youtube_video_id} src={youtubeEmbedLink + targetVideo.youtube_video_id} style={{'height': '800px', 'width': '1600px'}} />
                 <VideoInteract youtube_video_id={targetVideo.youtube_video_id} videoInfoBE={targetVideo}/>
-            </>
+            </div>
         )
     }
     return (null)

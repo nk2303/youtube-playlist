@@ -11,7 +11,7 @@ const AllComments = ({thisVideoComments, videoInfoBE}) => {
             <div className="margin-20"> <h5>All comments</h5> </div>
             <AddComment videoInfoBE={videoInfoBE}/>
             {thisVideoComments.map(comment => 
-                <div className="dark-bg radius-5px margin-10 ">
+                <div className="dark-bg radius-5px margin-20 ">
                     <Comment key={comment.id} comment={comment} />
                 </div>)}
         </div>
