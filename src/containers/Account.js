@@ -8,8 +8,10 @@ import FollowedPlaylists from './FollowedPlaylists';
 const Account = () => {
 
     return (
-        <div className='row'>
-            <div className='col-2 padding-0 '> <AccountNav /></div>
+        <div className='row main-w'>
+            <div className='col-2 padding-0 '> 
+                <AccountNav />
+            </div>
             <div className='col-10 black-bg min-h-playlists'> 
                 <div className='row'>
                     <Route exact path='/account/userinfo' render={(routeProps) => <UserInfo {...routeProps} />} />
