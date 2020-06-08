@@ -11,17 +11,6 @@ The frontend is built using React. The backend repo can be found [here](https://
 
 The user can make an account, create a playlist, search videos from Youtube, and  add the video into that playlist.
 
-## Installation
-
-  To run locally, download or clone the repository, then run 'npm install'.
-  ```
-  npm install
-  ```
-  To run the project locally, use `npm start` or `yarn start` (more available commands listed below)
-  ```
-  npm start
-  ```
-
 ## Authors
 
 Built by [Ngan Kim Khong](https://github.com/nk2303)
@@ -36,16 +25,16 @@ Built by [Ngan Kim Khong](https://github.com/nk2303)
 1) Clone the repo. 
 2) From your terminal, navigate to the youtube-playlist-ruby-on-rails.  
 3) From your terminal, type: 
-  -bundle install 
-  -rails db:seed
-  -rails db:migrate
-  -rails s
+  ```bundle install
+  ```rails db:seed```
+  ```rails db:migrate```
+  ```rails s```
   
 (frontend) (https://github.com/nk2303/youtube-playlist)
 1) Clone the repo. 
 2) From your terminal, navigate to the youtube-playlist.  
 3) From your terminal, type:
-    -npm start
+``` npm start ```
 4) From your web browswer:
     - sign up with a username
 5) Enjoy :)
