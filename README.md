@@ -2,10 +2,10 @@
 
 Youtube Playlist description
 
-![Image of account page for managing playlists](public/thumbnailphoto.png)
+![Image of account page for managing playlists](public/GHthumbnailpic.png)
 
 
-The frontend is built using React. The backend repo can be found [here](https://github.com/Jricecake/Mod-4-Choreganizer-Back-End) and you can visit the site [here](https://choreganizer-f0c34.web.app/).
+The frontend is built using React. The backend repo can be found [here](https://github.com/nk2303/youtube-playlist-ruby-on-rails).
 
 ## Installation
 
@@ -21,7 +21,7 @@ The frontend is built using React. The backend repo can be found [here](https://
 
 ## Authors
 
-Built by [Jonny Riecke](https://github.com/Jricecake), [Ngan Kim Khong](https://github.com/nk2303), and [Diana Wendt](https://github.com/dianakw8591).
+Built by [Ngan Kim Khong](https://github.com/nk2303)
 
 ## Contributing
 
