@@ -25,7 +25,7 @@ Built by [Ngan Kim Khong](https://github.com/nk2303)
 1) Clone the repo. 
 2) From your terminal, navigate to the youtube-playlist-ruby-on-rails.  
 3) From your terminal, type: 
-  ```bundle install
+  ```bundle install```
   ```rails db:seed```
   ```rails db:migrate```
   ```rails s```
