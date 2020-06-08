@@ -21,6 +21,8 @@ const CreatePlaylist = ({createPlaylist}) => {
     e.preventDefault();
     e.stopPropagation();
     createPlaylist(playlistName, description);
+    setplaylistName('');
+    setDescription('');
     }
 
     return (
@@ -49,7 +51,7 @@ const CreatePlaylist = ({createPlaylist}) => {
                                     id="exampleInputEmail1"
                                     placeholder="Playlist name..."
                                     onChange={handlePlaylistNameChange}
-                                    value={playlistName}
+                                    value={playlistName }
                                     ></input>
                             </div>
                             

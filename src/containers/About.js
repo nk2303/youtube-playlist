@@ -7,7 +7,7 @@ const About = (props) => {
             <div className="jumbotron ">
                 <h3 className="display-4">Youtube Playlist!</h3>
                 <hr className="my-4"></hr>
-                <p>A React-Redux app created by a new programmer who often confused by Javascript syntax.</p>
+                <p>A single page application created by a new programmer who often confused by Javascript syntax.</p>
                 <p>Therefore she often look up tutorials on Youtube. But there are too many Advertisement.</p>
                 <p>Hence she decided to make Youtube Playlist.</p>
             </div>
@@ -26,7 +26,8 @@ const About = (props) => {
                 <div className="col-5">
                     <br/><br/><br/><br/>
                     <h5>Why Youtube Playlist and not just Youtube ?</h5><br/>
-                    <p>Because ads.</p>
+                    <p>If you want to manage a lot of playlists.</p>
+                    <p>And because videos without that many ads.</p>
                 </div>
 
             </div>

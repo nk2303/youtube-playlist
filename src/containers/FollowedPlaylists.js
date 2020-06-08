@@ -1,6 +1,5 @@
 import React from 'react';
 import PlaylistCollection from '../components/PlayListCollection';
-import CreatePlaylist from '../components/CreatePlaylist';
 import SearchPlaylist from '../components/SearchPlaylist';
 
 const FollowedPlaylists = () => {

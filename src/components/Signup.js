@@ -19,8 +19,7 @@ const Signup = ({ signupError, signup }) => {
     const handleSubmit = e => {
         e.preventDefault();
         e.stopPropagation();
-        signup(email, username, fullName, password);
-    }
+        signup(email, username, fullName, password) }
 
     return (
         <form onSubmit={handleSubmit}>
@@ -77,7 +76,7 @@ const Signup = ({ signupError, signup }) => {
                     <input 
                         type="password" 
                         className={`form-control radius-5px${signupError ? ' is-invalid' : ''}`} 
-                        id="confirmPassword" 
+                        id="confirmPassword1" 
                         placeholder="Confirm password ..."
                         onChange={handleConfirmPasswordChange}
                         value={confirmPassword}
@@ -87,8 +86,7 @@ const Signup = ({ signupError, signup }) => {
                         : null}
                 </div>
                 
-                <button 
-                    type="submit" className="btn btn-success radius-5px btn-block">Sign Up</button>
+                <button type="submit" className="btn btn-success radius-5px btn-block">Sign Up</button>
             </fieldset>
         </form>
     )

@@ -19,6 +19,7 @@ const AddComment = ({videoInfoBE, createComment, userInfo}) => {
         e.preventDefault();
         e.stopPropagation();
         createComment(content, userInfo.id, videoInfoBE.id);
+        setContent('');
     }
     
     return (
