@@ -5,8 +5,6 @@ A playlist-management tool for YouTube streaming which minimizes video ad interf
 ![Image of account page for managing playlists](public/GHthumbnailpic.png)
 
 
-The frontend is built using React. The backend repo can be found [here](https://github.com/nk2303/youtube-playlist-ruby-on-rails).
-
 ## Features
 
 The user can make an account, create a playlist, search videos from Youtube, and  add the video into that playlist.
@@ -19,6 +17,9 @@ Built by [Ngan Kim Khong](https://github.com/nk2303)
 
 - Javascript, React, Redux
 - Ruby on Rails
+
+## Video Tutorial 
+https://www.youtube.com/watch?v=axmKyyd579c
 
 ## Installation 
 (backend) (https://github.com/nk2303/youtube-playlist-ruby-on-rails)
