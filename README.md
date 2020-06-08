@@ -1,11 +1,15 @@
 # Youtube Playlist client
 
-Youtube Playlist description
+A playlist-management tool for YouTube streaming which minimizes video ad interference.
 
 ![Image of account page for managing playlists](public/GHthumbnailpic.png)
 
 
 The frontend is built using React. The backend repo can be found [here](https://github.com/nk2303/youtube-playlist-ruby-on-rails).
+
+## Features
+
+The user can make an account, create a playlist, search videos from Youtube, and  add the video into that playlist.
 
 ## Installation
 
@@ -17,15 +21,39 @@ The frontend is built using React. The backend repo can be found [here](https://
   ```
   npm start
   ```
-  To use in conjunction with a locally hosted backend, the `API_ROOT` in `/src/services/api.js` will need to be updated to reflect your localhost. 
 
 ## Authors
 
 Built by [Ngan Kim Khong](https://github.com/nk2303)
 
+## Technology Used 
+
+- Javascript, React, Redux
+- Ruby on Rails
+
+## Installation 
+(backend) (https://github.com/nk2303/youtube-playlist-ruby-on-rails)
+1) Clone the repo. 
+2) From your terminal, navigate to the youtube-playlist-ruby-on-rails.  
+3) From your terminal, type: 
+  -bundle install 
+  -rails db:seed
+  -rails db:migrate
+  -rails s
+  
+(frontend) (https://github.com/nk2303/youtube-playlist)
+1) Clone the repo. 
+2) From your terminal, navigate to the youtube-playlist.  
+3) From your terminal, type:
+    -npm start
+4) From your web browswer:
+    - sign up with a username
+5) Enjoy :)
+
 ## Contributing
 
 Contributions are welcome. Feel free to open a pull request or branch from this project.
+
 
 ## License
 
