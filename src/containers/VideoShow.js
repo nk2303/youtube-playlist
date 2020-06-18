@@ -30,7 +30,13 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
+const mapStateToProps = (store) => {
+    return {
+        targetVideo: store.targetVideo
+    }
+}
 
-export default connect(store => ({targetVideo: store.targetVideo}), mapDispatchToProps)(VideoShow);
+
+export default connect(mapStateToProps, mapDispatchToProps)(VideoShow);
 
 

@@ -6,10 +6,8 @@ const FollowedPlaylists = () => {
 
     return (
         <div className='black-bg min-h-playlists'> 
-            <div className='row'>
-                <div className='margin-25 width-300px'><h4 className="left-pad-20 text-muted">Followed playlists</h4><br/>
-                    <SearchPlaylist/>
-                </div>
+            <div className='margin-25 width-300px'><h4 className="left-pad-20 text-muted">Followed playlists</h4><br/>
+                <SearchPlaylist/>
             </div>
             <br/>
             <PlaylistCollection />

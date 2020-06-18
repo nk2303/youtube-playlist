@@ -15,7 +15,7 @@ const PlaylistCollection = ({getPlaylists, userPlaylists, deletePlaylist}) => {
     }
     
     return (
-        <div className='row left-margin-5'>
+        <div className='row playlist-box'>
             { userPlaylists.map( playlist => 
                 <div key={playlist.id} className='width-300px margin-10 radius-5px dark-bg'>
                     <div className='text-light card-title'> {playlist.playlist_name}

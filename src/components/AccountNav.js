@@ -7,14 +7,14 @@ import { Link } from 'react-router-dom';
 const AccountNav = ({signout}) => {
 
     return (
-        <div className="h-800">
+        <div className="col-2 account-nav">
             <div className="list-group">
                 <br/>
                 <Link to='/account' className="btn btn-link" >My Playlists<span className="sr-only">(current)</span></Link><br/>
                 <Link to='/account/followedplaylists' className="btn btn-link" >My Followed Playlists<span className="sr-only">(current)</span></Link><br/>
                 <Link to='/account/userinfo' className="btn btn-link" >My Account<span className="sr-only">(current)</span></Link><br/>
             </div>
-            <button type="button" className="btn btn-danger signout-btn" onClick={signout}>Sign out</button>
+            <button type="button" className="btn-danger signout-btn btn-block" onClick={signout}>Sign out</button>
         </div>
     )
 }
