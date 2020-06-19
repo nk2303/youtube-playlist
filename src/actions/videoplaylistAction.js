@@ -1,4 +1,5 @@
-const BACKEND_DOMAIN = process.env.REACT_APP_BACKEND_DOMAIN;
+// const BACKEND_DOMAIN = process.env.REACT_APP_BACKEND_DOMAIN;
+const BACKEND_DOMAIN= 'https://youtube-playlist-rubyonrails.herokuapp.com'
 let token = () => localStorage.getItem("token")
 
 export const createVideoPlaylist = (playlist_id, video_id, dispatch) => {
