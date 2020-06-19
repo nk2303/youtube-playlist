@@ -26,7 +26,7 @@ const CreatePlaylist = ({createPlaylist}) => {
     }
 
     return (
-        <div className="row">
+        <div>
             <button
                 type="submit"
                 className="playlist-bg width-300px btn btn-secondary radius-5px text-muted"

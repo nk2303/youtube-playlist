@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from "react-redux";
 import './App.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.js';
 import "bootswatch/dist/superhero/bootstrap.min.css";
 import NavBar from './components/NavBar';

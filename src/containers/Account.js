@@ -10,11 +10,9 @@ const Account = () => {
     return (
         <div className='row main-w'>
             <AccountNav/>
-            <div className='col-10 black-bg min-h-playlists'> 
-                <Route exact path='/account/userinfo' render={(routeProps) => <UserInfo {...routeProps} />} />
-                <Route exact path='/account' render={(routeProps) => <AllPlaylist {...routeProps} />} />
-                <Route exact path='/account/followedplaylists' render={(routeProps) => <FollowedPlaylists {...routeProps} />} />
-            </div>
+            <Route exact path='/account/userinfo' render={(routeProps) => <UserInfo {...routeProps} />} />
+            <Route exact path='/account' render={(routeProps) => <AllPlaylist {...routeProps} />} />
+            <Route exact path='/account/followedplaylists' render={(routeProps) => <FollowedPlaylists {...routeProps} />} />
         </div>
     )
 }

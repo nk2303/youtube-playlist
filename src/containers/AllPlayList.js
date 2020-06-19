@@ -6,10 +6,10 @@ import SearchPlaylist from '../components/SearchPlaylist';
 const AllPlaylist = () => {
 
     return (
-        <div className='col'> 
-            <h4 className="row left-pad-20 text-muted">My playlists</h4>
-            <SearchPlaylist/>
-            <CreatePlaylist/>
+        <div className='col-10 black-bg account-pl'> 
+            <h4 className="text-muted">My playlists</h4><br/>
+            <SearchPlaylist/><br/>
+            <CreatePlaylist/><br/>
             <PlaylistCollection />
         </div>
     )

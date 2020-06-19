@@ -15,9 +15,10 @@ const PlaylistCollection = ({getPlaylists, userPlaylists, deletePlaylist}) => {
     }
     
     return (
-        <div className='row playlist-box'>
+        <div className='pl-box row'>
             { userPlaylists.map( playlist => 
-                <div key={playlist.id} className='width-300px margin-10 radius-5px dark-bg'>
+                <div className="pl-css">
+                <div key={playlist.id} className='playlist-col'>
                     <div className='text-light card-title'> {playlist.playlist_name}
                         <button type="button" className="close white" data-toggle="modal" data-target={`#deletePlaylist${playlist.id}`}>&times;</button>
                             <div className="radius-5px modal fade" 
@@ -37,7 +38,7 @@ const PlaylistCollection = ({getPlaylists, userPlaylists, deletePlaylist}) => {
                                             <p>Deleting a playlist means you will lose all existing videos in this playlist: {playlist.playlist_name}. Are you sure ?</p>
                                         </div>
                                         <div className="modal-footer">
-                                            <button type="button" className="btn btn-secondary radius-5px" data-dismiss="modal">Cancel</button>
+                                            <button type="button" className="btn-secondary radius-5px" data-dismiss="modal">Cancel</button>
                                             <button onClick={() => handleDelete(playlist.id)} type="submit" data-dismiss="modal" className="btn btn-danger radius-5px">Delete</button>
                                         </div>
                                     </div>
@@ -53,7 +54,10 @@ const PlaylistCollection = ({getPlaylists, userPlaylists, deletePlaylist}) => {
                             videoId = {video.id}
                         /> )}
                     </div>
-            </div>) }
+                </div> 
+                </div> 
+                ) 
+            }
         </div>
     )
 }
