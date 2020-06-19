@@ -1,6 +1,13 @@
 // const BACKEND_DOMAIN = process.env.REACT_APP_BACKEND_DOMAIN;
 const BACKEND_DOMAIN= 'https://youtube-playlist-rubyonrails.herokuapp.com'
 
+const headers = () => {
+    return {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+    }
+}
+
 const loginSignup = (apiUrl, username, password) => {
     const user = {
         user: {
@@ -10,10 +17,7 @@ const loginSignup = (apiUrl, username, password) => {
     }
     return fetch(apiUrl, {
         method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-            Accept: "application/json",
-        },
+        headers: headers(),
         body: JSON.stringify(user)
     }).then(res => res.json())
     .then(res => {
@@ -46,10 +50,7 @@ export const signup = (email, username, full_name, password) => {
     }
     return fetch(`${BACKEND_DOMAIN}/api/v1/users`, {
         method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-            Accept: "application/json",
-        },
+        headers: headers(),
         body: JSON.stringify(user)
     }).then(res => res.json())
     .then(res => {

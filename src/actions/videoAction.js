@@ -2,6 +2,14 @@
 const BACKEND_DOMAIN= 'https://youtube-playlist-rubyonrails.herokuapp.com'
 const token = () => localStorage.getItem("token")
 
+const headers = () => {
+    return {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        Authorization: token()
+    }
+}
+
 export const updateVideoPlaylist = () => {}
 
 export const createVideo = (youtube_video_id) => {
@@ -12,11 +20,7 @@ export const createVideo = (youtube_video_id) => {
 
     return fetch(`${BACKEND_DOMAIN}/api/v1/videos`, {
         method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-            Accept: "application/json",
-            Authorization: token()
-        },
+        headers: headers(),
         body: JSON.stringify(input)
     }).then(res => res.json())
     .then(res => {
@@ -36,11 +40,7 @@ export const createVideo = (youtube_video_id) => {
 export const findVideo = (videoId, dispatch) => {
     return fetch(`${BACKEND_DOMAIN}/api/v1/videos/${videoId}`, {
         method: "GET",
-        headers: {
-            "Content-Type": "application/json",
-            Accept: "application/json",
-            Authorization: token()
-        },
+        headers: headers(),
     }).then(res => res.json())
     .then(res => {
         if (res.message) {

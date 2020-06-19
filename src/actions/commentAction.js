@@ -2,6 +2,14 @@
 let token = () => localStorage.getItem("token")
 const BACKEND_DOMAIN= 'https://youtube-playlist-rubyonrails.herokuapp.com'
 
+const headers = () => {
+    return {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        Authorization: token()
+    }
+}
+
 export const createComment = (content, user_id, video_id) => {
 
     const input = {
@@ -13,11 +21,7 @@ export const createComment = (content, user_id, video_id) => {
     }
     return fetch(`${BACKEND_DOMAIN}/api/v1/comments`, {
         method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-            Accept: "application/json",
-            Authorization: token()
-        },
+        headers: headers(),
         body: JSON.stringify(input)
     }).then(res => res.json())
     .then(res => {
@@ -40,11 +44,7 @@ export const createComment = (content, user_id, video_id) => {
 export const deleteComment = (comment_id, dispatch) => {
     fetch(`${BACKEND_DOMAIN}/api/v1/comments/${comment_id}`, {
         method: "DELETE",
-        headers: {
-            "Content-Type": "application/json",
-            Accept: "application/json",
-            Authorization: token()
-        },
+        headers: headers(),
     }).then(res => res.json())
     .then(res => {
         if (res.error) {
