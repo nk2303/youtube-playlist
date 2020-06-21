@@ -31,7 +31,7 @@ export const Login = ({ loginError, signin }) => {
                     <input
                       type="text"
                       className={`form-control radius-5px${loginError ? ' is-invalid' : ''}`}
-                      id="usernameInput"
+                      id="usernameLogIn"
                       placeholder="Username ..."
                       onChange={handleUsernameChange}
                       value={username}
@@ -42,7 +42,7 @@ export const Login = ({ loginError, signin }) => {
                     <input
                       type="password" 
                       className={`form-control radius-5px${loginError ? ' is-invalid' : ''}`}
-                      id="passwordInput" 
+                      id="passwordLogIn" 
                       placeholder="Password ..."
                       onChange={handlePasswordChange}
                       value={password}
@@ -63,4 +63,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(store => ({loginError: store.userContext.error}), mapDispatchToProps)(Login);
+export default connect(store => ({loginError: store.userContext.loginError}), mapDispatchToProps)(Login);

@@ -31,7 +31,7 @@ const Signup = ({ signupError, signup }) => {
                     <input
                         type="text"
                         className={`form-control radius-5px${signupError ? ' is-invalid' : ''}`}
-                        id="username1"
+                        id="usernameSignUp"
                         placeholder="Username ..."
                         onChange={handleUsernameChange}
                         value={username}
@@ -42,7 +42,7 @@ const Signup = ({ signupError, signup }) => {
                     <input 
                         type="text"
                         className={`form-control radius-5px${signupError ? ' is-invalid' : ''}`}
-                        id="fullName"
+                        id="fullNameSignUp"
                         placeholder="Full name ..."
                         onChange={handleFullNameChange}
                         value={fullName}
@@ -53,7 +53,7 @@ const Signup = ({ signupError, signup }) => {
                     <input 
                         type="email" 
                         className={`form-control radius-5px${signupError ? ' is-invalid' : ''}`} 
-                        id="InputEmail1" 
+                        id="EmailSignUp" 
                         aria-describedby="emailHelp" 
                         placeholder="Email address ..."
                         onChange={handleEmailChange}
@@ -65,7 +65,7 @@ const Signup = ({ signupError, signup }) => {
                     <input 
                         type="password" 
                         className={`form-control radius-5px${signupError ? ' is-invalid' : ''}`} 
-                        id="InputPassword1" 
+                        id="PasswordSignUp" 
                         placeholder="Password ..."
                         onChange={handlePasswordChange}
                         value={password}
@@ -76,7 +76,7 @@ const Signup = ({ signupError, signup }) => {
                     <input 
                         type="password" 
                         className={`form-control radius-5px${signupError ? ' is-invalid' : ''}`} 
-                        id="confirmPassword1" 
+                        id="confirmPassword" 
                         placeholder="Confirm password ..."
                         onChange={handleConfirmPasswordChange}
                         value={confirmPassword}
@@ -98,6 +98,6 @@ const mapDispatchToProps = (dispatch) => {
     }
   }
 
-export default connect(store => ({signupError: store.userContext.error}), mapDispatchToProps)(Signup);
+export default connect(store => ({signupError: store.userContext.singupError}), mapDispatchToProps)(Signup);
 
 
