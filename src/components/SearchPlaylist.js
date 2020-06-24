@@ -18,7 +18,6 @@ const SearchPlaylist = ({searchMyPlaylists, userPlaylists}) => {
     const handleMyPlaylistSearchSubmit = e => {
         e.preventDefault();
         e.stopPropagation();
-        
         searchMyPlaylists(playlistName.toLowerCase());
     }
 

@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import {getMyPlaylists, deletePlaylist} from '../actions/playlistAction';
 
 
-const PlaylistCollection = ({getPlaylists, userPlaylists, deletePlaylist}) => {
+const PlaylistCollection = ({getPlaylists, userPlaylists, deletePlaylist, searchPlaylistName}) => {
 
     useEffect(() => {
         getPlaylists()
@@ -16,7 +16,7 @@ const PlaylistCollection = ({getPlaylists, userPlaylists, deletePlaylist}) => {
     
     return (
         <div className='pl-box row'>
-            { userPlaylists.map( playlist => 
+            { userPlaylists.filter(p => p.playlist_name.toLowerCase().includes(searchPlaylistName)).map( playlist => 
                 <div className="pl-css">
                 <div key={playlist.id} className='playlist-col'>
                     <div className='text-light card-title'> {playlist.playlist_name}
@@ -69,4 +69,12 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-export default connect(store => ({userPlaylists: store.myPlaylists}), mapDispatchToProps)(PlaylistCollection)
+
+const mapStateToProps = (store) => {
+    return {
+        userPlaylists: store.myPlaylists,
+        searchPlaylistName: store.searchPlaylist
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(PlaylistCollection)

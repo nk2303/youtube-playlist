@@ -9,9 +9,6 @@ export const playlistReducer = (state = PLAYLIST_INITIAL_STATE, action) => {
         case 'GET_MY_PLAYLISTS':
             return action.payload.map(item => item);
 
-        case 'SEARCH_MY_PLAYLIST':
-            return state.filter(p => p.playlist_name.toLowerCase().includes(action.payload))
-
         case 'DELETE_PLAYLIST':
             return state.filter((p) => p.id !== action.playlist_id);
 
