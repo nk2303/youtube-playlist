@@ -1,18 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import {connect} from 'react-redux';
 import {searchMyPlaylists} from '../actions/searchPlaylistAction';
 
 
-const SearchPlaylist = ({searchMyPlaylists, userPlaylists}) => {
+const SearchPlaylist = ({searchMyPlaylists}) => {
 
-    // useEffect(() => {
-    //     searchMyPlaylists()
-    // }, [])
 
     const [playlistName, setPlaylistName] = useState('');
 
     const handlePlaylistNameChange = e => {
         setPlaylistName(e.target.value)
+        searchMyPlaylists(e.target.value.toLowerCase());
     }
 
     const handleMyPlaylistSearchSubmit = e => {
