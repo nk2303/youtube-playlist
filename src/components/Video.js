@@ -107,11 +107,9 @@ export const Video = (props) => {
                     </div>
                 </div>
             </div>
-            {console.log("KIM LOOK HERE", props)}
-            {(!props.videoId) ?
+
             <Link to={`/videoshow/${props.youtubeVideoId}`} className="btn video-btn radius-5px" >Full Screen<span className="sr-only"></span></Link>
-            :
-            <Link to={`/videoshow/${props.youtubeVideoId}`} className="btn video-btn radius-5px" >Full Screen<span className="sr-only"></span></Link>}                
+             
             </div>
             <iframe className="radius-5px" title={props.youtubeVideoId} src={youtubeEmbedLink + props.youtubeVideoId} />
             

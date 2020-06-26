@@ -111,3 +111,8 @@ body {
 .pl-css {
   background-color: transparent;
 }
+
+.pl-spinner {
+  text-align: center;
+  display: block;
+}

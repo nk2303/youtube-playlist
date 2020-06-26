@@ -15,6 +15,7 @@ const PlaylistCollection = ({getPlaylists, userPlaylists, deletePlaylist, search
     }
     
     return (
+        userPlaylists ?
         <div className='pl-box row'>
             { userPlaylists.filter(p => p.playlist_name.toLowerCase().includes(searchPlaylistName)).map( playlist => 
                 <div className="pl-css">
@@ -58,6 +59,13 @@ const PlaylistCollection = ({getPlaylists, userPlaylists, deletePlaylist, search
                 </div> 
                 ) 
             }
+        </div>
+        :
+        <div className="pl-spinner">
+            <div className="spinner-border text-info" role="status" block>
+                <span className="sr-only">Loading...</span>
+            </div>
+            <p className="text-info">Loading your playlists...</p>
         </div>
     )
 }
