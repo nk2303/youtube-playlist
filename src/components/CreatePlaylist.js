@@ -51,7 +51,7 @@ const CreatePlaylist = ({createPlaylist}) => {
                                         id="exampleInputEmail1"
                                         placeholder="Playlist name..."
                                         onChange={handlePlaylistNameChange}
-                                        value={playlistName }
+                                        value={ playlistName }
                                         ></input>
                                 </div>
                                 

@@ -5,6 +5,7 @@ import { createVideoPlaylist, deleteVideoPlaylist } from '../actions/videoplayli
 import {createVideo} from '../actions/videoAction';
 
 const youtubeEmbedLink = "https://www.youtube.com/embed/"
+
 export const Video = (props) => {
 
     const [userPlaylist, setUserPlaylist] = useState(props.myPlaylists);
@@ -106,10 +107,11 @@ export const Video = (props) => {
                     </div>
                 </div>
             </div>
+            {console.log("KIM LOOK HERE", props)}
             {(!props.videoId) ?
             <Link to={`/videoshow/${props.youtubeVideoId}`} className="btn video-btn radius-5px" >Full Screen<span className="sr-only"></span></Link>
             :
-            <Link to={`/videoshow/${props.videoId}`} className="btn video-btn radius-5px" >Full Screen<span className="sr-only"></span></Link>}                
+            <Link to={`/videoshow/${props.youtubeVideoId}`} className="btn video-btn radius-5px" >Full Screen<span className="sr-only"></span></Link>}                
             </div>
             <iframe className="radius-5px" title={props.youtubeVideoId} src={youtubeEmbedLink + props.youtubeVideoId} />
             

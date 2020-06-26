@@ -22,11 +22,7 @@ export const playlistReducer = (state = PLAYLIST_INITIAL_STATE, action) => {
         
         case 'DELETE_PLAYLIST_VIDEO':
             return state.map(p => p.id === action.payload.playlist_id
-                ? {
-                    ...p,
-                    videos: p.videos.filter(v => v.id !== action.payload.video_id)
-                }
-                : p);
+                ? { ...p, videos: p.videos.filter(v => v.id !== action.payload.video_id) } : p);
 
         default:
             return state;
