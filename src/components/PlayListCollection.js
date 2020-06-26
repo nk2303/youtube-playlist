@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import Video from './Video';
 import { connect } from 'react-redux';
 import {getMyPlaylists, deletePlaylist} from '../actions/playlistAction';
-
+import LoadingSpinner from './LoadingSpinner'
 
 const PlaylistCollection = ({getPlaylists, userPlaylists, deletePlaylist, searchPlaylistName}) => {
 
@@ -61,12 +61,7 @@ const PlaylistCollection = ({getPlaylists, userPlaylists, deletePlaylist, search
             }
         </div>)
         :
-        (<div className="pl-spinner">
-            <div className="spinner-border text-info" role="status" block>
-                <span className="sr-only">Loading...</span>
-            </div>
-            <p className="text-info">Loading your playlists... Please wait, this doesn't happen very often</p>
-        </div>);
+        <LoadingSpinner info='playlists'/>
 }
 
 const mapDispatchToProps = (dispatch) => {
