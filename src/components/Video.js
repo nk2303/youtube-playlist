@@ -126,7 +126,7 @@ const mapDispatchToProps = (dispatch) => {
 
 const mapStateToProps = (store) => {
     return {
-        myPlaylists: store.myPlaylists,
+        myPlaylists: store.myPlaylists.values,
     }
 }
 

@@ -1,28 +1,32 @@
-const PLAYLIST_INITIAL_STATE = [];
+const PLAYLIST_INITIAL_STATE = { values: [], loading: false };
 
 export const playlistReducer = (state = PLAYLIST_INITIAL_STATE, action) => {
     switch (action.type) {
 
         case 'CREATE_PLAYLIST':
-            return [...state, action.payload.playlist];
+            return {...state, values: [...state.values, action.payload.playlist]};
+
+        case 'GETTING_MY_PLAYLIST':
+            return { ...state, loading: true };
 
         case 'GET_MY_PLAYLISTS':
-            return action.payload.map(item => item);
+            return { values: action.payload.map(item => item), loading: false };
 
         case 'DELETE_PLAYLIST':
-            return state.filter((p) => p.id !== action.playlist_id);
+            return {...state, values: state.filter((p) => p.id !== action.playlist_id)};
 
         case 'CREATE_PLAYLIST_VIDEO':
-            return state.map(p => p.id === action.payload.playlist.id
+            return { ...state, values: state.map(p => p.id === action.payload.playlist.id
                 ? {
                     ...p,
                     videos: [...p.videos, action.payload.video] 
                 }
-                : p);
+                : p) };
         
         case 'DELETE_PLAYLIST_VIDEO':
-            return state.map(p => p.id === action.payload.playlist_id
-                ? { ...p, videos: p.videos.filter(v => v.id !== action.payload.video_id) } : p);
+            return { ...state, values: state.map(p => p.id === action.payload.playlist_id
+                ? { ...p, videos: p.videos.filter(v => v.id !== action.payload.video_id) } : p)
+            };
 
         default:
             return state;

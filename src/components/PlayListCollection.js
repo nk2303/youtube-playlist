@@ -7,17 +7,17 @@ import {getMyPlaylists, deletePlaylist} from '../actions/playlistAction';
 const PlaylistCollection = ({getPlaylists, userPlaylists, deletePlaylist, searchPlaylistName}) => {
 
     useEffect(() => {
-        getPlaylists()
+        getPlaylists();
     }, [])
 
     const handleDelete = (playlist_id) => {
         deletePlaylist(playlist_id);
     }
+
     
-    return (
-        userPlaylists ?
-        <div className='pl-box row'>
-            { userPlaylists.filter(p => p.playlist_name.toLowerCase().includes(searchPlaylistName)).map( playlist => 
+    return !userPlaylists.loading ?
+        (<div className='pl-box row'>
+            { userPlaylists.values.filter(p => p.playlist_name.toLowerCase().includes(searchPlaylistName)).map( playlist => 
                 <div className="pl-css">
                 <div key={playlist.id} className='playlist-col'>
                     <div className='text-light card-title'> {playlist.playlist_name}
@@ -59,15 +59,14 @@ const PlaylistCollection = ({getPlaylists, userPlaylists, deletePlaylist, search
                 </div> 
                 ) 
             }
-        </div>
+        </div>)
         :
-        <div className="pl-spinner">
+        (<div className="pl-spinner">
             <div className="spinner-border text-info" role="status" block>
                 <span className="sr-only">Loading...</span>
             </div>
-            <p className="text-info">Loading your playlists...</p>
-        </div>
-    )
+            <p className="text-info">Loading your playlists... Please wait, this doesn't happen very often</p>
+        </div>);
 }
 
 const mapDispatchToProps = (dispatch) => {

@@ -39,7 +39,7 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 const mapStateToProps = (store) => {
-    return { userPlaylists: store.myPlaylists }
+    return { userPlaylists: store.myPlaylists.values }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(SearchPlaylist)

@@ -38,7 +38,9 @@ export const createPlaylist = (playlist_name, description) => {
 }
 
 export const getMyPlaylists = (dispatch) => {
-
+    dispatch({
+        type: "GETTING_MY_PLAYLIST"
+    });
     return fetch(`${BACKEND_DOMAIN}/api/v1/playlists`, {
         method: "GET",
         headers: headers(),
