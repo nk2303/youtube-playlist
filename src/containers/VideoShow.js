@@ -5,18 +5,14 @@ import VideoInteract from './VideoInteract';
 import { findVideo } from '../actions/videoAction';
 
 const youtubeEmbedLink = "https://www.youtube.com/embed/"
-const VideoShow = ({targetVideo, findVideo}) => {
+const VideoShow = ({targetVideo}) => {
     const { videoId } = useParams();
-
-    // useEffect(() =>{
-    //     findVideo(videoId)
-    // }, []);
 
     if (targetVideo) {
         return (
             <div className="black-bg">
                 <iframe title={targetVideo.youtube_video_id} src={youtubeEmbedLink + videoId} style={{'height': '800px', 'width': '1600px'}} />
-                {/* <VideoInteract youtube_video_id={targetVideo.youtube_video_id} videoInfoBE={targetVideo}/> */}
+                <VideoInteract youtube_video_id={targetVideo.youtube_video_id} videoInfoBE={targetVideo}/>
             </div>
         )
     } 

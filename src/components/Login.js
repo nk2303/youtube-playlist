@@ -15,6 +15,11 @@ export const Login = ({ loginError, signin }) => {
       setPassword(e.target.value);
     }
 
+    const handleDemo = () => {
+      setUsername('kim');
+      setPassword('123');
+    }
+
     const handleSubmit = e => {
       e.preventDefault();
       e.stopPropagation();
@@ -22,6 +27,7 @@ export const Login = ({ loginError, signin }) => {
     }
 
     return (
+      <>
         <form onSubmit={handleSubmit}>
             <fieldset>
                 <legend className="text-center">Have an account?</legend>
@@ -52,8 +58,14 @@ export const Login = ({ loginError, signin }) => {
                       : null}
                 </div>
                 <button type="submit" className="btn btn-info radius-5px btn-block">Log in</button>
+                
             </fieldset>
+            
         </form>
+        <br/>
+            <p className="text-center">Or log in with demo account</p>
+            <button className="btn btn-warning radius-5px btn-block" onClick={handleDemo}>Demo</button>
+        </>
     )
 }
 
