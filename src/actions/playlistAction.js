@@ -37,6 +37,31 @@ export const createPlaylist = (playlist_name, description) => {
     });
 }
 
+export const getAllPlaylists = (dispatch) => {
+    dispatch({
+        type: "GETTING_MY_PLAYLIST"
+    });
+    return fetch(`${BACKEND_DOMAIN}/api/v1/allplaylists`, {
+        method: "GET",
+        headers: headers(),
+    }).then(res => res.json())
+    .then(res => {
+        if (res.message) {
+            return {
+                type: "GET_MY_PLAYLISTS_ERROR",
+                error: res.message
+            };
+        }
+        dispatch(
+            {
+                type: "GET_ALL_PLAYLISTS",
+                payload: res
+            }
+        ) 
+    });
+
+}
+
 export const getMyPlaylists = (dispatch) => {
     dispatch({
         type: "GETTING_MY_PLAYLIST"

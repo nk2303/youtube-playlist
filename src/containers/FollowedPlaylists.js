@@ -1,14 +1,14 @@
 import React from 'react';
-import PlaylistCollection from '../components/PlayListCollection';
-import SearchPlaylist from '../components/SearchPlaylist';
+import FollowedPlaylistsCollection from '../components/FollowedPlaylistsCollection';
+import SearchAllPlaylist from '../components/SearchAllPlaylist';
 
 const FollowedPlaylists = () => {
 
     return (
         <div className='col-10 black-bg account-pl'> 
-            <h4 className="text-muted">My playlists</h4><br/>
-            <SearchPlaylist/><br/>
-            <PlaylistCollection />
+            <h4 className="text-muted">My followed playlists</h4><br/>
+            <SearchAllPlaylist/><br/>
+            <FollowedPlaylistsCollection />
         </div>
     )
 }

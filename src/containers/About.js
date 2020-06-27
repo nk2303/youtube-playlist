@@ -13,14 +13,14 @@ const About = (props) => {
             </div>
             <div className="padding-2-rem row">
                 <div className="col-7">
-                    <h5>How to use:</h5> <br/>
+                    <h5>Information</h5> <br/>
                     <ol>
-                        <li><p>First, you will need a Youtube API key from Youtube:</p></li>
-                        <p><a href="https://developers.google.com/youtube/v3/getting-started"> - Follow this link for Youtube API key instructions.</a></p>
-                        <li><p>Then, you will need to install the application from Github.</p></li>
-                        <p><a href="https://github.com/nk2303/chore-app-frontend"> - Github Youtube Playlist front-end repository.</a></p>
-                        <p><a href="https://github.com/nk2303/youtube-playlist-ruby-on-rails"> - Github this Youtube Playlist back-end repository.</a></p>
-                        <li><p>Follow instructions from Github documentation for both front-end and back-end.</p></li>
+                        <li><p>YouTube Playlist Github code source:</p></li>
+                        <p><a href="https://github.com/nk2303/youtube-playlist"> - Youtube Playlist front-end repository.</a></p>
+                        <p><a href="https://github.com/nk2303/youtube-playlist-ruby-on-rails"> - Youtube Playlist back-end repository.</a></p>
+                        <li><p>About author Ngan Kim Khong:</p></li>
+                        <p><a href="https://github.com/nk2303">Github</a> | <a href="https://ngankhong.myportfolio.com">Website</a> | <a href="https://www.linkedin.com/in/ngan-khong/">LinkedIn</a> </p>
+                        <p>I'm an aspiring software engineer. It's my goal to keep on learning and improving my programming skills.</p>
                     </ol>
                 </div>
                 <div className="col-5">

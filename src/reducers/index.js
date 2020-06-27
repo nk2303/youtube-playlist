@@ -3,7 +3,9 @@ import { searchReducer } from "./searchReducer";
 import { userReducer } from "./userReducer";
 import { playlistReducer } from "./playlistReducer";
 import { videoReducer } from "./videoReducer";
-import { searchPlaylistReducer } from "./searchPlaylistReducer"
+import { searchPlaylistReducer } from "./searchPlaylistReducer";
+import { allPlaylistsReducer } from "./allPlaylistsReducer"
+
 
 export default combineReducers({
     videos: searchReducer,
@@ -11,4 +13,5 @@ export default combineReducers({
     myPlaylists: playlistReducer,
     targetVideo: videoReducer,
     searchPlaylist: searchPlaylistReducer,
+    allPlaylists: allPlaylistsReducer
 });

@@ -4,3 +4,10 @@ export const searchMyPlaylists = (playlistName) => {
         payload: playlistName
     }
 }
+
+export const searchAllPlaylists = (playlistName) => {
+    return {
+        type: "SEARCH_ALL_PLAYLISTS",
+        payload: playlistName
+    }
+}
