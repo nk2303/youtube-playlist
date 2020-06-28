@@ -1,17 +1,18 @@
 import React, {useEffect} from 'react';
 import Video from './Video';
 import { connect } from 'react-redux';
-import {getAllPlaylists, deletePlaylist} from '../actions/playlistAction';
+import {followPlaylist} from '../actions/followPlaylistAction';
+import {getAllPlaylists} from '../actions/playlistAction';
 import LoadingSpinner from './LoadingSpinner'
 
-const ExplorePlaylists = ({getAllPlaylists, allPlaylists, deletePlaylist, searchPlaylistName}) => {
+const ExplorePlaylists = ({getAllPlaylists, allPlaylists, followPlaylist, searchPlaylistName}) => {
 
     useEffect(() => {
         getAllPlaylists();
     }, [])
 
-    const handleDelete = (playlist_id) => {
-        deletePlaylist(playlist_id);
+    const handleFollow = (playlist_id) => {
+        followPlaylist(playlist_id);
     }
 
     
@@ -21,26 +22,26 @@ const ExplorePlaylists = ({getAllPlaylists, allPlaylists, deletePlaylist, search
                 <div className="pl-css">
                 <div key={playlist.id} className='playlist-col'>
                     <div className='text-light card-title'> {playlist.playlist_name}
-                        {/* <button type="button" className="close white" data-toggle="modal" data-target={`#deletePlaylist${playlist.id}`}>&times;</button> */}
+                        <button type="button" className="close white" data-toggle="modal" data-target={`#followPlaylist${playlist.id}`}>+</button>
                             <div className="radius-5px modal fade" 
-                                id={`deletePlaylist${playlist.id}`} 
+                                id={`followPlaylist${playlist.id}`} 
                                 tabIndex="-1" role="dialog" 
-                                aria-labelledby={`deletePlaylist${playlist.id}Label`} 
+                                aria-labelledby={`followPlaylist${playlist.id}Label`} 
                                 aria-hidden="true">
                                 <div className="radius-5px modal-dialog" role="document">
                                     <div className="modal-content">
                                         <div className="modal-header">
-                                            <h5 className="modal-title" id={`deletePlaylist${playlist.id}Label`} >Unfollow playlist</h5>
+                                            <h5 className="modal-title" id={`followPlaylist${playlist.id}Label`} >Follow playlist</h5>
                                             <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                             </button>
                                         </div>
                                         <div className="modal-body">
-                                            <p>Unfollow this playlist: {playlist.playlist_name}. Are you sure ?</p>
+                                            <p>Follow this playlist: {playlist.playlist_name}</p>
                                         </div>
                                         <div className="modal-footer">
                                             <button type="button" className="btn-secondary radius-5px" data-dismiss="modal">Cancel</button>
-                                            <button onClick={() => handleDelete(playlist.id)} type="submit" data-dismiss="modal" className="btn btn-danger radius-5px">Unfollow</button>
+                                            <button onClick={() => handleFollow(playlist.id)} type="submit" data-dismiss="modal" className="btn btn-info radius-5px">Follow</button>
                                         </div>
                                     </div>
                                 </div>
@@ -67,7 +68,7 @@ const ExplorePlaylists = ({getAllPlaylists, allPlaylists, deletePlaylist, search
 const mapDispatchToProps = (dispatch) => {
     return {
         getAllPlaylists: () => getAllPlaylists(dispatch),
-        deletePlaylist: (playlist_id) => deletePlaylist(playlist_id, dispatch)
+        followPlaylist: (playlist_id) => followPlaylist(playlist_id).then(dispatch)
     }
 }
 

@@ -1,5 +1,4 @@
-// const BACKEND_DOMAIN = process.env.REACT_APP_BACKEND_DOMAIN;
-const BACKEND_DOMAIN= 'https://youtube-playlist-rubyonrails.herokuapp.com'
+const BACKEND_DOMAIN = process.env.REACT_APP_BACKEND_DOMAIN;
 let token = () => localStorage.getItem("token")
 
 const headers = () => {
@@ -85,7 +84,6 @@ export const getMyPlaylists = (dispatch) => {
         ) 
     });
 }
-
 
 
 export const deletePlaylist = (playlist_id, dispatch) => {
