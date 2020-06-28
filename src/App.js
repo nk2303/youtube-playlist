@@ -6,7 +6,7 @@ import "bootswatch/dist/superhero/bootstrap.min.css";
 import NavBar from './components/NavBar';
 import Home from './containers/Home';
 import LoginPage from './containers/LoginPage';
-import Account from './containers/Account';
+import Playlists from './containers/Playlists';
 import About from './containers/About';
 import VideoShow from './containers/VideoShow';
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
@@ -18,9 +18,9 @@ const App = ({ user }) => {
         <NavBar/>
         <Route exact path='/' render={(routeProps) => <Home {...routeProps} />} />
         <Route
-          path="/account" 
+          path="/playlists" 
           render={(routeProps) => 
-              user ? <Account {...routeProps} />
+              user ? <Playlists {...routeProps} />
                : <Redirect to={{pathname: '/login', state: { from: routeProps.location }}} />
             }
           />
@@ -28,7 +28,7 @@ const App = ({ user }) => {
           exact 
           path='/login' 
           render={(routeProps) =>
-              user ? <Redirect to={{pathname: '/account'}} /> : <LoginPage {...routeProps} />} />
+              user ? <Redirect to={{pathname: '/playlists'}} /> : <LoginPage {...routeProps} />} />
         <Route exact path='/about' render={(routeProps) => <About {...routeProps} />} />
         <Route exact path='/videoshow/:videoId' render={(routeProps) => <VideoShow {...routeProps} />} />
       </Router>

@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import {searchMyPlaylists} from '../actions/searchPlaylistAction';
 
 
-const SearchPlaylist = ({searchMyPlaylists}) => {
+const SearchMyPlaylist = ({searchMyPlaylists}) => {
 
 
     const [playlistName, setPlaylistName] = useState('');
@@ -24,7 +24,7 @@ const SearchPlaylist = ({searchMyPlaylists}) => {
             <input
                 className="form-control mr-sm-2 radius-5px min-width-600"
                 type="text"
-                placeholder="Find playlist by name..." 
+                placeholder="Find my playlist by name..." 
                 onChange={handlePlaylistNameChange}
                 value={playlistName}
             />
@@ -42,4 +42,4 @@ const mapStateToProps = (store) => {
     return { userPlaylists: store.myPlaylists.values }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(SearchPlaylist)
+export default connect(mapStateToProps, mapDispatchToProps)(SearchMyPlaylist)
