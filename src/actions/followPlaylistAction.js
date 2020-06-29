@@ -20,6 +20,7 @@ export const followPlaylist = (playlist_id) => {
         body: JSON.stringify(playlist_follow)
     }).then(res => res.json())
     .then(res => {
+        console.log(res)
         if (res.error) {
             return {
                 type: "CREATE_PLAYLIST_FOLLOWER_ERROR",
@@ -28,13 +29,13 @@ export const followPlaylist = (playlist_id) => {
         }
         return {
             type: "CREATE_PLAYLIST_FOLLOWER",
-            payload: res.playlist_follower
+            payload: res
         }
     });
 }
 
 export const getFollowedPlaylists = (dispatch) => {
-    
+
     dispatch({
         type: "GETTING_MY_FOLLOWED_PLAYLIST"
     });
@@ -59,6 +60,25 @@ export const getFollowedPlaylists = (dispatch) => {
 
 }
 
-export const unfollowPlaylist = (playlist_id) => {
-    console.log('omg')
+export const unfollowPlaylist = (playlist_id, dispatch) => {
+    fetch(`${BACKEND_DOMAIN}/api/v1/playlist_followers/unfollow/${playlist_id}`, {
+        method: "DELETE",
+        headers: headers(),
+    }).then(res => res.json())
+    .then(res => {
+        if (res.error) {
+            dispatch( {
+                type: "DELETE_PLAYLIST_FOLLOWER_ERROR",
+                error: res.error
+            });
+        }
+        else {
+            dispatch(
+                {
+                    type: "DELETE_PLAYLIST_FOLLOWER",
+                    payload: playlist_id
+                }
+            );
+        }
+    });
 }

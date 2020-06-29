@@ -4,10 +4,10 @@ import { connect } from 'react-redux';
 import {getFollowedPlaylists, unfollowPlaylist} from '../actions/followPlaylistAction';
 import LoadingSpinner from './LoadingSpinner'
 
-const FollowedPlaylistsCollection = ({followedPlaylists, myFollowedPlaylists, unfollowPlaylist, searchPlaylistName}) => {
+const FollowedPlaylistsCollection = ({getFollowedPlaylists, myFollowedPlaylists, unfollowPlaylist, searchPlaylistName}) => {
 
     useEffect(() => {
-        followedPlaylists();
+        getFollowedPlaylists();
     }, [])
 
     const handleUnfollow = (playlist_id) => {
@@ -15,7 +15,7 @@ const FollowedPlaylistsCollection = ({followedPlaylists, myFollowedPlaylists, un
     }
 
     
-    return myFollowedPlaylists ?
+    return !myFollowedPlaylists.loading ?
         (<div className='pl-box row'>
             { myFollowedPlaylists.values.filter(p => p.playlist_name.toLowerCase().includes(searchPlaylistName)).map( playlist => 
                 <div className="pl-css">
@@ -66,7 +66,7 @@ const FollowedPlaylistsCollection = ({followedPlaylists, myFollowedPlaylists, un
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        followedPlaylists: () => getFollowedPlaylists(dispatch),
+        getFollowedPlaylists: () => getFollowedPlaylists(dispatch),
         unfollowPlaylist: (playlist_id) => unfollowPlaylist(playlist_id, dispatch)
     }
 }
