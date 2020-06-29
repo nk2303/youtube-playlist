@@ -16,10 +16,8 @@ export const playlistReducer = (state = MY_PLAYLIST_INITIAL_STATE, action) => {
             return {...state, values: state.values.filter( p => p.id !== action.playlist_id)};
 
         case 'CREATE_PLAYLIST_VIDEO':
-            return { ...state, values: state.map(p => p.id === action.payload.playlist.id
-                ? {
-                    ...p,
-                    videos: [...p.videos, action.payload.video] 
+            return { ...state, values: state.values.map(p => p.id === action.payload.playlist.id
+                ? { ...p, videos: [...p.videos, action.payload.video] 
                 } : p) };
         
         case 'DELETE_PLAYLIST_VIDEO':
