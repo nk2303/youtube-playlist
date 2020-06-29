@@ -13,11 +13,7 @@ const headers = () => {
 export const createComment = (content, user_id, video_id) => {
 
     const input = {
-        comment: {
-            content,
-            user_id,
-            video_id
-        }
+        comment: { content, user_id, video_id }
     }
     return fetch(`${BACKEND_DOMAIN}/api/v1/comments`, {
         method: "POST",

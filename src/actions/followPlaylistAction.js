@@ -34,6 +34,7 @@ export const followPlaylist = (playlist_id) => {
 }
 
 export const getFollowedPlaylists = (dispatch) => {
+    
     dispatch({
         type: "GETTING_MY_FOLLOWED_PLAYLIST"
     });

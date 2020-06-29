@@ -1,6 +1,6 @@
-const PLAYLIST_INITIAL_STATE = { values: [], loading: false };
+const MY_PLAYLIST_INITIAL_STATE = { values: [], loading: false };
 
-export const playlistReducer = (state = PLAYLIST_INITIAL_STATE, action) => {
+export const playlistReducer = (state = MY_PLAYLIST_INITIAL_STATE, action) => {
     switch (action.type) {
 
         case 'CREATE_PLAYLIST':

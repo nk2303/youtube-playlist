@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import {getFollowedPlaylists, unfollowPlaylist} from '../actions/followPlaylistAction';
 import LoadingSpinner from './LoadingSpinner'
 
-const FollowedPlaylistsCollection = ({followedPlaylists, followedPlaylists, unfollowPlaylist, searchPlaylistName}) => {
+const FollowedPlaylistsCollection = ({followedPlaylists, myFollowedPlaylists, unfollowPlaylist, searchPlaylistName}) => {
 
     useEffect(() => {
         followedPlaylists();
@@ -15,9 +15,9 @@ const FollowedPlaylistsCollection = ({followedPlaylists, followedPlaylists, unfo
     }
 
     
-    return followedPlaylists ?
+    return myFollowedPlaylists ?
         (<div className='pl-box row'>
-            { followedPlaylists.filter(p => p.playlist_name.toLowerCase().includes(searchPlaylistName)).map( playlist => 
+            { myFollowedPlaylists.values.filter(p => p.playlist_name.toLowerCase().includes(searchPlaylistName)).map( playlist => 
                 <div className="pl-css">
                 <div key={playlist.id} className='playlist-col'>
                     <div className='text-light card-title'> {playlist.playlist_name}
@@ -60,7 +60,6 @@ const FollowedPlaylistsCollection = ({followedPlaylists, followedPlaylists, unfo
                 ) 
             }
         </div>)
-        // <p>*Page is not yet completed... in progress</p>
         :
         <LoadingSpinner info='followed playlists'/>
 }
@@ -75,7 +74,7 @@ const mapDispatchToProps = (dispatch) => {
 
 const mapStateToProps = (store) => {
     return {
-        followedPlaylists: store.followedPlaylists,
+        myFollowedPlaylists: store.myFollowedPlaylists,
         searchPlaylistName: store.searchPlaylist
     }
 }

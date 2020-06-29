@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import Video from './Video';
 import { connect } from 'react-redux';
 import {followPlaylist} from '../actions/followPlaylistAction';
-import {getAllPlaylists} from '../actions/playlistAction';
+import {getAllPlaylists} from '../actions/allPlaylistsAction';
 import LoadingSpinner from './LoadingSpinner'
 
 const ExplorePlaylists = ({getAllPlaylists, allPlaylists, followPlaylist, searchPlaylistName}) => {

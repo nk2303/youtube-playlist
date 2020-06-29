@@ -15,5 +15,5 @@ export default combineReducers({
     targetVideo: videoReducer,
     searchPlaylist: searchPlaylistReducer,
     allPlaylists: allPlaylistsReducer,
-    followedPlaylists: followedPlaylistsReducer
+    myFollowedPlaylists: followedPlaylistsReducer
 });
