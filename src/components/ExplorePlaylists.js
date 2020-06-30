@@ -1,19 +1,25 @@
 import React, {useEffect} from 'react';
 import Video from './Video';
 import { connect } from 'react-redux';
-import {followPlaylist} from '../actions/followPlaylistAction';
+import {followPlaylist, getFollowedPlaylists} from '../actions/followPlaylistAction';
 import {getAllPlaylists} from '../actions/allPlaylistsAction';
 import LoadingSpinner from './LoadingSpinner'
+import { act } from 'react-dom/test-utils';
 
-const ExplorePlaylists = ({getAllPlaylists, allPlaylists, followPlaylist, searchPlaylistName}) => {
+const ExplorePlaylists = ({getFollowedPlaylists, myFollowedPlaylists, getAllPlaylists, allPlaylists, followPlaylist, searchPlaylistName}) => {
 
     useEffect(() => {
         getAllPlaylists();
     }, [])
 
+    useEffect(() => {
+        getFollowedPlaylists();
+    }, [])
+
     const handleFollow = (playlist_id) => {
-        followPlaylist(playlist_id);
+            followPlaylist(playlist_id); 
     }
+
 
     
     return allPlaylists ?
@@ -22,6 +28,8 @@ const ExplorePlaylists = ({getAllPlaylists, allPlaylists, followPlaylist, search
                 <div className="pl-css">
                 <div key={playlist.id} className='playlist-col'>
                     <div className='text-light card-title'> {playlist.playlist_name}
+                    { !myFollowedPlaylists.values.find(p => p.id == playlist.id) ? 
+                        <>
                         <button type="button" className="close white" data-toggle="modal" data-target={`#followPlaylist${playlist.id}`}>+</button>
                             <div className="radius-5px modal fade" 
                                 id={`followPlaylist${playlist.id}`} 
@@ -46,6 +54,10 @@ const ExplorePlaylists = ({getAllPlaylists, allPlaylists, followPlaylist, search
                                     </div>
                                 </div>
                             </div>
+                            </>
+                            :
+                            null
+                        }
                     </div> 
                     <div className="max-height-w overflow-auto">
                         {playlist.videos.map(video => <Video
@@ -68,6 +80,7 @@ const ExplorePlaylists = ({getAllPlaylists, allPlaylists, followPlaylist, search
 const mapDispatchToProps = (dispatch) => {
     return {
         getAllPlaylists: () => getAllPlaylists(dispatch),
+        getFollowedPlaylists: () => getFollowedPlaylists(dispatch),
         followPlaylist: (playlist_id) => followPlaylist(playlist_id).then(dispatch)
     }
 }
@@ -76,7 +89,8 @@ const mapDispatchToProps = (dispatch) => {
 const mapStateToProps = (store) => {
     return {
         allPlaylists: store.allPlaylists,
-        searchPlaylistName: store.searchPlaylist
+        searchPlaylistName: store.searchPlaylist,
+        myFollowedPlaylists: store.myFollowedPlaylists,
     }
 }
 
