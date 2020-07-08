@@ -63,7 +63,7 @@ export const signup = (email, username, full_name, password) => {
             type: "SIGNUP",
             payload: res
         }
-    }); 
+    }).then( () => login(username, password))
 
 }
 
