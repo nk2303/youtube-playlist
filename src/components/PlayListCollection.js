@@ -18,7 +18,7 @@ const PlaylistCollection = ({getPlaylists, userPlaylists, deletePlaylist, search
     return !userPlaylists.loading ?
         (<div className='pl-box row'>
             { userPlaylists.values.filter(p => p.playlist_name.toLowerCase().includes(searchPlaylistName)).map( playlist => 
-                <div className="pl-css">
+                <div key={playlist.id} className="pl-css">
                 <div key={playlist.id} className='playlist-col'>
                     <div className='text-light card-title'> {playlist.playlist_name}
                         <button type="button" className="close white" data-toggle="modal" data-target={`#deletePlaylist${playlist.id}`}>&times;</button>
