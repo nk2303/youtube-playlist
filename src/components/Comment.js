@@ -35,8 +35,8 @@ const Comment = ({comment, deleteComment, user}) => {
                     </div>
                 </div>
             </div>
-            {/* <p className="text-info">{comment.user.username}</p> */}
-            <p className="text-info">kim</p>
+            <p className="text-info">{comment.user.username}</p>
+            {/* <p className="text-info">kim</p> */}
             <p>{comment.content}</p>
         </div>
         

@@ -1,24 +1,20 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import {createComment} from '../actions/commentAction';
 import {connect} from 'react-redux';
 
 
-const AddComment = ({videoInfoBE, createComment, userInfo}) => {
+const AddComment = ({youtube_video_id, videoInfoBE, createComment, userInfo}) => {
 
     const [content, setContent] = useState('');
 
     const handleContentChange = e => {
         setContent(e.target.value);
     }
-
-    useEffect(() => {
-        createComment()
-    }, [])
     
     const handleCommentSubmit = e => {
         e.preventDefault();
         e.stopPropagation();
-        createComment(content, userInfo.id, videoInfoBE.id);
+        createComment(content, userInfo.id, youtube_video_id);
         setContent('');
     }
     
@@ -44,7 +40,7 @@ const AddComment = ({videoInfoBE, createComment, userInfo}) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        createComment: (content, user_id, video_id) => createComment(content, user_id, video_id).then(dispatch)
+        createComment: (content, user_id, youtube_video_id) => createComment(content, user_id, youtube_video_id).then(dispatch)
     }
 }
 

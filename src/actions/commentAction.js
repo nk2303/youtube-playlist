@@ -10,10 +10,10 @@ const headers = () => {
     }
 }
 
-export const createComment = (content, user_id, video_id) => {
-
+export const createComment = (content, user_id, youtube_video_id) => {
+    
     const input = {
-        comment: { content, user_id, video_id }
+        comment: { content, user_id, youtube_video_id }
     }
     return fetch(`${BACKEND_DOMAIN}/api/v1/comments`, {
         method: "POST",
@@ -27,6 +27,7 @@ export const createComment = (content, user_id, video_id) => {
                 error: res.error
             };
         }
+        console.log("NEW COMMENT HERE", res)
         return {
             type: "CREATE_COMMENT",
             payload: res.comment
@@ -34,7 +35,24 @@ export const createComment = (content, user_id, video_id) => {
     });
 }
 
-
+export const getComments = (youtube_video_id) => {
+    return fetch(`${BACKEND_DOMAIN}/api/v1/comments/youtube_id/${youtube_video_id}`, {
+        method: "GET",
+        headers: headers(),
+    }).then(res => res.json())
+    .then(res => {
+        if (res.error) {
+            return {
+                type: "GET_COMMENTS_ERROR",
+                error: res.error
+            };
+        }
+        return {
+            type: "GET_COMMENTS",
+            payload: res
+        }
+    });
+}
 
 
 export const deleteComment = (comment_id, dispatch) => {
