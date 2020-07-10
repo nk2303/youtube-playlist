@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { createVideoPlaylist, deleteVideoPlaylist } from '../actions/videoplaylistAction';
+import {getMyPlaylists} from '../actions/playlistAction';
 import {createVideo} from '../actions/videoAction';
 
 const youtubeEmbedLink = "https://www.youtube.com/embed/"
@@ -11,6 +12,7 @@ export const Video = (props) => {
     const [userPlaylist, setUserPlaylist] = useState(props.myPlaylists);
 
     let modal;
+
 
     const resetAllChanges = () => {
         setUserPlaylist(props.myPlaylists);
@@ -51,6 +53,7 @@ export const Video = (props) => {
         }
         if (!props.videoId) {
             createVideo(props.youtubeVideoId).then(action => {
+                console.log(action)
                 makePromise(action.payload.id);
             });
         }
@@ -120,7 +123,8 @@ export const Video = (props) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         createVideoPlaylist: (playlistId, videoId) => createVideoPlaylist(playlistId, videoId, dispatch),
-        deleteVideoPlaylist: (playlistId, videoId) => deleteVideoPlaylist(playlistId, videoId, dispatch)
+        deleteVideoPlaylist: (playlistId, videoId) => deleteVideoPlaylist(playlistId, videoId, dispatch),
+        getPlaylists: () => getMyPlaylists(dispatch),
     }
 }
 

@@ -29,6 +29,7 @@ export const createVideo = (youtube_video_id) => {
                 error: res.error
             };
         }
+        console.log(res.video)
         return {
             type: "CREATE_VIDEO",
             payload: res.video

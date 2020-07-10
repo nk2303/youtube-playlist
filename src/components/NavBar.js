@@ -13,7 +13,6 @@ const NavBar = ({ user, searchYoutube, signout }) => {
         e.preventDefault();
         history.push('/');
         searchYoutube(searchKeyword);
-        setSearchKeywork('');
     }
 
     const handleChange = (e) => {

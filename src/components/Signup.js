@@ -9,6 +9,7 @@ const Signup = ({ signupError, signup }) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
+    const [fill, setFill] = useState(false)
 
     const handleUsernameChange = e => {setUsername(e.target.value)}
     const handleFullNameChange = e => {setFullname(e.target.value)}
@@ -19,7 +20,11 @@ const Signup = ({ signupError, signup }) => {
     const handleSubmit = e => {
         e.preventDefault();
         e.stopPropagation();
-        signup(email, username, fullName, password) }
+        (email === '' || username === '' || fullName === '' || password === '' || password !== confirmPassword) ?
+        setFill(true)
+        :
+        signup(email, username, fullName, password) 
+    }
 
     return (
         <form onSubmit={handleSubmit}>
@@ -30,7 +35,7 @@ const Signup = ({ signupError, signup }) => {
                 <div className="form-group">
                     <input
                         type="text"
-                        className={`form-control radius-5px${signupError ? ' is-invalid' : ''}`}
+                        className={`form-control radius-5px${signupError || fill ? ' is-invalid' : ''}`}
                         id="usernameSignUp"
                         placeholder="Username ..."
                         onChange={handleUsernameChange}
@@ -41,7 +46,7 @@ const Signup = ({ signupError, signup }) => {
                 <div className="form-group">
                     <input 
                         type="text"
-                        className={`form-control radius-5px${signupError ? ' is-invalid' : ''}`}
+                        className={`form-control radius-5px${signupError || fill ? ' is-invalid' : ''}`}
                         id="fullNameSignUp"
                         placeholder="Full name ..."
                         onChange={handleFullNameChange}
@@ -52,7 +57,7 @@ const Signup = ({ signupError, signup }) => {
                 <div className="form-group">
                     <input 
                         type="email" 
-                        className={`form-control radius-5px${signupError ? ' is-invalid' : ''}`} 
+                        className={`form-control radius-5px${signupError || fill ? ' is-invalid' : ''}`} 
                         id="EmailSignUp" 
                         aria-describedby="emailHelp" 
                         placeholder="Email address ..."
@@ -64,7 +69,7 @@ const Signup = ({ signupError, signup }) => {
                 <div className="form-group">
                     <input 
                         type="password" 
-                        className={`form-control radius-5px${signupError ? ' is-invalid' : ''}`} 
+                        className={`form-control radius-5px${signupError || fill ? ' is-invalid' : ''}`} 
                         id="PasswordSignUp" 
                         placeholder="Password ..."
                         onChange={handlePasswordChange}
@@ -75,14 +80,14 @@ const Signup = ({ signupError, signup }) => {
                 <div className="form-group">
                     <input 
                         type="password" 
-                        className={`form-control radius-5px${signupError ? ' is-invalid' : ''}`} 
+                        className={`form-control radius-5px${signupError || fill ? ' is-invalid' : ''}`} 
                         id="confirmPassword" 
                         placeholder="Confirm password ..."
                         onChange={handleConfirmPasswordChange}
                         value={confirmPassword}
                         ></input>
-                        {signupError
-                        ? <div className="invalid-feedback">Sorry, that username or email was already taken.</div>
+                        {signupError || fill
+                        ? <div className="invalid-feedback">Invalid input, please check your sign up info.</div>
                         : null}
                 </div>
                 
