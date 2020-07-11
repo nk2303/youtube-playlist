@@ -10,9 +10,6 @@ const headers = () => {
 }
 
 export const getAllPlaylists = (dispatch) => {
-    // dispatch({
-    //     type: "GETTING_ALL_PLAYLIST"
-    // });
     return fetch(`${BACKEND_DOMAIN}/api/v1/allplaylists`, {
         method: "GET",
         headers: headers(),

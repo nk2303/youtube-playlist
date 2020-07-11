@@ -27,7 +27,6 @@ export const createComment = (content, user_id, youtube_video_id) => {
                 error: res.error
             };
         }
-        console.log("NEW COMMENT HERE", res)
         return {
             type: "CREATE_COMMENT",
             payload: res.comment
@@ -68,12 +67,10 @@ export const deleteComment = (comment_id, dispatch) => {
             });
         }
         else {
-            dispatch(
-                {
+            dispatch({
                     type: "DELETE_COMMENT",
                     comment_id: comment_id
-                }
-            );
+            });
         }
     }).catch(err => {
         dispatch( {

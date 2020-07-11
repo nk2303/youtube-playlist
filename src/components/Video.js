@@ -53,7 +53,6 @@ export const Video = (props) => {
         }
         if (!props.videoId) {
             createVideo(props.youtubeVideoId).then(action => {
-                console.log(action)
                 makePromise(action.payload.id);
             });
         }
