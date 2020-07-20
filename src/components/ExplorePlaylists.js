@@ -24,7 +24,7 @@ const ExplorePlaylists = ({getFollowedPlaylists, myFollowedPlaylists, getAllPlay
     
     return allPlaylists ?
         (<div className='pl-box row'>
-            { allPlaylists.filter(p => p.playlist_name.toLowerCase().includes(searchPlaylistName)).map( playlist => 
+            { allPlaylists.values.filter(p => p.playlist_name.toLowerCase().includes(searchPlaylistName)).map( playlist => 
                 <div className="pl-css">
                 <div key={playlist.id} className='playlist-col'>
                     <div className='text-light card-title'> {playlist.playlist_name}

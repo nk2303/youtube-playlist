@@ -65,6 +65,7 @@ export const Login = ({ loginError, signin }) => {
         <br/>
             <p className="text-center">Or log in with demo account</p>
             <button className="btn btn-warning radius-5px btn-block" onClick={handleDemo}>Demo</button>
+            *First time log-in might take a while, please wait for 30 seconds.
         </>
     )
 }
