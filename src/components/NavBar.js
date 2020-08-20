@@ -19,7 +19,6 @@ const NavBar = ({ user, searchYoutube, signout }) => {
         setSearchKeywork(e.target.value);
     }
     
-
     return (
         <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
             <Link to='/playlists' className="navbar-brand" >Playlists<span className="sr-only">(current)</span></Link>
